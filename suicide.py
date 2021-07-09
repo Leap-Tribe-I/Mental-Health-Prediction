@@ -46,6 +46,6 @@ print(missing_data)
 
 # drop unnecessary columns
 data = data.drop(['Timestamp','comments'], axis=1)
-data = data.dropna(how='all', axis='columns')    
+print("\n")   
 print("Dataset afterdropping columns:\n")
 print(data.head())
