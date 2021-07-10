@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import os.path
 
 # modules for encoding
 from sklearn import preprocessing
@@ -13,21 +14,22 @@ from sklearn import preprocessing
 
 
 # data loading
-#enter the location of your input file
-input_location = input("Enter your input file location: ")
-# check whether the file exists or not
-try:
-    data = pd.read_csv(input_location)
-except:
-    print("File not found")
-    quit()
-# check whether the file is in csv or not
-try:
-    data.to_csv(input_location)
-except:
-    print("File not in csv format")
-    quit()
+def main():
+    global data
+    global input_location
+    #enter the location of your input file
+    input_location = input("Enter your input file location: ")
 
+    #Check input and read file
+    if(input_location.endswith(".csv")):
+        data = pd.read_csv(input_location)
+    elif(input_location.endswith(".xlsx")):
+        data = pd.read_excel(input_location)
+    else:
+        print("ERROR: File format not supported!")
+        main()
+
+main()
 
 # data preprocessing
 print(data.info())
@@ -48,7 +50,8 @@ print("\n")
 
 
 # # drop unnecessary columns
-data = data.drop(['Timestamp'], axis=1)
+if 'Timestamp' in data:
+    data = data.drop(['Timestamp'], axis=1)
 print("\n")   
 print("Dataset afterdropping columns:\n")
 print(data.head())
