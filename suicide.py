@@ -4,7 +4,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import os.path
+import seaborn as sns
 
 # modules for encoding
 from sklearn import preprocessing
@@ -68,6 +68,7 @@ for feature in data:
     labelValue = [*le_name_mapping]
     labelDictionary[labelKey] =labelValue
 
+# print(labelDictionary)
 for key, value in labelDictionary.items():     
     print(key, value)
 
@@ -77,6 +78,17 @@ print(data.head())
 print("\n")
 
 # output the encoded data
-data.to_csv(input_location + '_encoded.csv')
-print("\n")
-print("Encoded data saved as: " + input_location + '_encoded.csv')
+# data.to_csv(input_location + '_encoded.csv')
+# print("\n")
+# print("Encoded data saved as: " + input_location + '_encoded.csv')
+
+# correlation matrix
+corr = data.corr()
+# print("\n")
+# print("Correlation Matrix:\n")
+# print(corr)
+# print("\n")
+f, ax = plt.subplots(figsize=(9, 9))
+sns.heatmap(corr, vmax=.8, square=True, annot=True)
+plt.show()
+plt.savefig('matrix.png')
