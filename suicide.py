@@ -38,11 +38,11 @@ def main():
 main()
 
 # data preprocessing
-print(data.info())
-print("\n")
-print("Some of Data:\n")
-print(data.head())
-print("\n")
+# print(data.info())
+# print("\n")
+# print("Some of Data:\n")
+# print(data.head())
+# print("\n")
 
 
 # data Cleaning
@@ -58,9 +58,9 @@ print("\n")
 # # drop unnecessary columns
 if 'Timestamp' in data:
     data = data.drop(['Timestamp'], axis=1)
-print("\n")   
-print("Dataset afterdropping columns:\n")
-print(data.head())
+# print("\n")   
+# print("Dataset afterdropping columns:\n")
+# print(data.head())
 
 # data encoding
 labelDictionary = {}
@@ -75,13 +75,13 @@ for feature in data:
     labelDictionary[labelKey] =labelValue
 
 # print(labelDictionary)
-for key, value in labelDictionary.items():     
-    print(key, value)
+# for key, value in labelDictionary.items():     
+#     print(key, value)
 
-print("\n")
-print("Dataset after encoding:\n")
-print(data.head())
-print("\n")
+# print("\n")
+# print("Dataset after encoding:\n")
+# print(data.head())
+# print("\n")
 
 # output the encoded data
 # data.to_csv(input_location + '_encoded.csv')
