@@ -151,6 +151,5 @@ def log_reg_mod():
 
     accuracy = evalModel(lr, y_test, y_pred_class)
 
-    accuracyDict['Log_Reg'] = accuracy * 
-    print("Logistic Regression Accuracy: {accuracy}")
+    accuracyDict['Log_Reg'] = accuracy * 100
 log_reg_mod()
