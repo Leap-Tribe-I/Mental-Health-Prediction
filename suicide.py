@@ -13,6 +13,9 @@ from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 #training models
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
+from sklearn import metrics
+from sklearn.metrics import accuracy_score, mean_squared_error, precision_recall_curve
+from sklearn.linear_model import LogisticRegression
 # sklearn modules for model creation
 
 
@@ -120,3 +123,34 @@ plt.xticks(range(X.shape[1]), labels, rotation='vertical')
 plt.xlim([-1, X.shape[1]])
 plt.show()
 
+#Tuning and evaluation of models
+def evalModel(model, y_test, y_pred_class):
+    acc_score = metrics.accuracy_score(y_test, y_pred_class)
+    print("Accuracy: ", acc_score)
+    print("NULL Accuracy: ", y_test.value_counts())
+    print("Percentage of ones: ", y_test.mean())
+    print("Percentage of zeros: ", 1 - y_test.mean())
+    #creating a confunsion matrix
+    conmat = metrics.confusion_matrix(y_test, y_pred_class)
+
+    sns.heatmap(conmat, annot=True)
+    plt.title("Confusion LOG REG")
+    plt.xlabel("predicted")
+    plt.ylabel("Actual")
+    plt.show()
+    return acc_score
+
+#Logistic Regression Model
+def log_reg_mod():
+    #training the data in Log reg model
+    lr = LogisticRegression()
+    lr.fit(X_train,y_train)
+
+    #Predicting the data
+    y_pred_class = lr.predict(X_test)
+
+    accuracy = evalModel(lr, y_test, y_pred_class)
+
+    accuracyDict['Log_Reg'] = accuracy * 100
+
+log_reg_mod()
