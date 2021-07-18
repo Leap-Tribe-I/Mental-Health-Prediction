@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import seaborn as sns
+import os
 
 # modules for encoding
 from sklearn import preprocessing
@@ -24,22 +25,30 @@ from sklearn.neighbors import KNeighborsClassifier
 
 
 # data loading
-def main():
-    global data
-    global input_location
-    #enter the location of your input file
-    input_location = input("Enter your input file location: ")
+#enter the location of your input file
+input_location = input("Enter your input file location: ")
+# check if the file exists
+while not os.path.isfile(input_location):
+    print("File does not exist")
+    exit()
+# Check input and read file
+if(input_location.endswith(".csv")):
+    data = pd.read_csv(input_location)
+elif(input_location.endswith(".xlsx")):
+    data = pd.read_excel(input_location)
+else:
+    print("ERROR: File format not supported!")
+    exit()
 
-    #Check input and read file
-    if(input_location.endswith(".csv")):
-        data = pd.read_csv(input_location)
-    elif(input_location.endswith(".xlsx")):
-        data = pd.read_excel(input_location)
-    else:
-        print("ERROR: File format not supported!")
-        main()
-
-main()
+# check data
+variable = ['family_size', 'annual_income', 'eating_habits', 
+            'addiction_friend', 'addiction', 'medical_history', 
+            'depressed', 'anxiety', 'happy_currently', 'suicidal_thoughts']
+if variable == list(data):
+    print("Data is loaded")
+else:
+    print("Dataset doesnot contain: ", variable)
+    exit()
 
 # data preprocessing
 # print(data.info())
@@ -104,7 +113,9 @@ plt.show()
 # plt.savefig('matrix.png')
 
 #Splitting the data
-independent_vars = ['family_size', 'annual_income', 'eating_habits', 'addiction_friend', 'addiction', 'medical_history', 'depressed', 'anxiety', 'happy_currently']
+independent_vars = ['family_size', 'annual_income', 'eating_habits', 
+                    'addiction_friend', 'addiction', 'medical_history', 
+                    'depressed', 'anxiety', 'happy_currently']
 X = data[independent_vars] 
 y = data['suicidal_thoughts']
 
@@ -135,13 +146,12 @@ plt.show()
 #Tuning and evaluation of models
 def evalModel(model, y_test, y_pred_class):
     acc_score = metrics.accuracy_score(y_test, y_pred_class)
-    print("Accuracy: ", acc_score)
-    print("NULL Accuracy: ", y_test.value_counts())
-    print("Percentage of ones: ", y_test.mean())
-    print("Percentage of zeros: ", 1 - y_test.mean())
+    # print("Accuracy: ", acc_score)
+    # print("NULL Accuracy: ", y_test.value_counts())
+    # print("Percentage of ones: ", y_test.mean())
+    # print("Percentage of zeros: ", 1 - y_test.mean())
     #creating a confunsion matrix
     conmat = metrics.confusion_matrix(y_test, y_pred_class)
-
     y_pred_prob = model.predict_proba(X_test)[:, 1]
     sns.heatmap(conmat, annot=True)
     plt.title("Confusion " + str(model))
@@ -154,14 +164,10 @@ def evalModel(model, y_test, y_pred_class):
 def log_reg_mod():
     #training the data in Log reg model
     lr = LogisticRegression()
-
     lr.fit(X_train,y_train)
-
     #Predicting the data
     y_pred_class = lr.predict(X_test)
-
     accuracy = evalModel(lr, y_test, y_pred_class)
-
     accuracyDict['Log_Reg'] = accuracy * 100
 log_reg_mod()
 
