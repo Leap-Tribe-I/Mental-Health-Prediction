@@ -14,9 +14,13 @@ from sklearn.model_selection import train_test_split
 
 #training models
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn import metrics
 from sklearn.metrics import accuracy_score, mean_squared_error, precision_recall_curve
 from sklearn.linear_model import LogisticRegression
+
+# sklearn modules for model creation
+from sklearn.neighbors import KNeighborsClassifier
 
 
 # data loading
@@ -138,8 +142,9 @@ def evalModel(model, y_test, y_pred_class):
     #creating a confunsion matrix
     conmat = metrics.confusion_matrix(y_test, y_pred_class)
 
+    y_pred_prob = model.predict_proba(X_test)[:, 1]
     sns.heatmap(conmat, annot=True)
-    plt.title("Confusion LOG REG")
+    plt.title("Confusion " + str(model))
     plt.xlabel("predicted")
     plt.ylabel("Actual")
     plt.show()
@@ -149,6 +154,7 @@ def evalModel(model, y_test, y_pred_class):
 def log_reg_mod():
     #training the data in Log reg model
     lr = LogisticRegression()
+
     lr.fit(X_train,y_train)
 
     #Predicting the data
@@ -158,3 +164,28 @@ def log_reg_mod():
 
     accuracyDict['Log_Reg'] = accuracy * 100
 log_reg_mod()
+
+def kNearest():
+    knn = KNeighborsClassifier(n_neighbors=15)
+    knn.fit(X_train,y_train)
+    y_pred_class = knn.predict(X_test)
+    accuracy = evalModel(knn, y_test, y_pred_class)
+    accuracyDict['KNN'] = accuracy * 100
+kNearest()
+
+def disTree():
+    dt = DecisionTreeClassifier(criterion='entropy')
+    dt.fit(X_train,y_train)
+    y_pred_class = dt.predict(X_test)
+    accuracy = evalModel(dt, y_test, y_pred_class)
+    accuracyDict['Decision Tree'] = accuracy * 100
+disTree()
+
+def randFor():
+    rf = RandomForestClassifier(n_estimators=20, random_state=1)
+    rf.fit(X_train,y_train)
+    y_pred_class = rf.predict(X_test)
+    accuracy = evalModel(rf, y_test, y_pred_class)
+    accuracyDict['Random Forest'] = accuracy * 100
+randFor()
+print(accuracyDict)
