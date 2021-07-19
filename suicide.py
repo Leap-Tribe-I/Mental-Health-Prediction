@@ -183,6 +183,10 @@ def log_reg_mod_tuning():
     print("Best parameters: ", grid.best_params_)
     print("Best cross-validation score: ", grid.best_score_*100, "%")
     print("Best estimator: ", grid.best_estimator_)
+    lr = grid.best_estimator_
+    y_pred_class = lr.predict(X_test)
+    accuracy = evalModel(lr, y_test, y_pred_class)
+    accuracyDict['Log_Reg_mod_tuning'] = accuracy * 100
 log_reg_mod_tuning()
 
 # tuning the KNN model with GridSearchCV
@@ -197,6 +201,10 @@ def tuneKNN():
     print("Best parameters: ", grid.best_params_)
     print("Best cross-validation score: ", grid.best_score_*100, "%")
     print("Best estimator: ", grid.best_estimator_)
+    knn = grid.best_estimator_
+    y_pred_class = knn.predict(X_test)
+    accuracy = evalModel(knn, y_test, y_pred_class)
+    accuracyDict['KNN'] = accuracy * 100
 tuneKNN()
 
 # tuning the Decision Tree model with GridSearchCV
@@ -211,6 +219,10 @@ def tuneDTree():
     print("Best parameters: ", grid.best_params_)
     print("Best cross-validation score: ", grid.best_score_*100, "%")
     print("Best estimator: ", grid.best_estimator_)
+    dt = grid.best_estimator_
+    y_pred_class = dt.predict(X_test)
+    accuracy = evalModel(dt, y_test, y_pred_class)
+    accuracyDict['Decision_Tree'] = accuracy * 100
 tuneDTree()
 
 # tuning the Random Forest model with GridSearchCV
@@ -226,45 +238,49 @@ def tuneRF():
     print("Best parameters: ", grid.best_params_)
     print("Best cross-validation score: ", grid.best_score_*100, "%")
     print("Best estimator: ", grid.best_estimator_)
-tuneRF()
-
-#Logistic Regression Model
-def log_reg_mod():
-    #training the data in Log reg model
-    lr = LogisticRegression()
-    lr.fit(X_train,y_train)
-    #Predicting the data
-    y_pred_class = lr.predict(X_test)
-    accuracy = evalModel(lr, y_test, y_pred_class)
-    accuracyDict['Log_Reg'] = accuracy * 100
-log_reg_mod()
-
-#knn Model
-def knn():
-    knn = KNeighborsClassifier(n_neighbors=15)
-    knn.fit(X_train,y_train)
-    y_pred_class = knn.predict(X_test)
-    accuracy = evalModel(knn, y_test, y_pred_class)
-    accuracyDict['KNN'] = accuracy * 100
-knn()
-
-#Decision Tree Model
-def disTree():
-    dt = DecisionTreeClassifier(criterion='entropy')
-    dt.fit(X_train,y_train)
-    y_pred_class = dt.predict(X_test)
-    accuracy = evalModel(dt, y_test, y_pred_class)
-    accuracyDict['Decision Tree'] = accuracy * 100
-disTree()
-
-#Random Forest Model
-def randFor():
-    rf = RandomForestClassifier(n_estimators=20, random_state=1)
-    rf.fit(X_train,y_train)
+    rf = grid.best_estimator_
     y_pred_class = rf.predict(X_test)
     accuracy = evalModel(rf, y_test, y_pred_class)
-    accuracyDict['Random Forest'] = accuracy * 100
-randFor()
+    accuracyDict['Random_Forest'] = accuracy * 100
+tuneRF()
+
+# #Logistic Regression Model
+# def log_reg_mod():
+#     #training the data in Log reg model
+#     lr = LogisticRegression()
+#     lr.fit(X_train,y_train)
+#     #Predicting the data
+#     y_pred_class = lr.predict(X_test)
+#     accuracy = evalModel(lr, y_test, y_pred_class)
+#     accuracyDict['Log_Reg'] = accuracy * 100
+# log_reg_mod()
+
+# #knn Model
+# def knn():
+#     knn = KNeighborsClassifier(n_neighbors=15)
+#     knn.fit(X_train,y_train)
+#     y_pred_class = knn.predict(X_test)
+#     accuracy = evalModel(knn, y_test, y_pred_class)
+#     accuracyDict['KNN'] = accuracy * 100
+# knn()
+
+# #Decision Tree Model
+# def disTree():
+#     dt = DecisionTreeClassifier(criterion='entropy')
+#     dt.fit(X_train,y_train)
+#     y_pred_class = dt.predict(X_test)
+#     accuracy = evalModel(dt, y_test, y_pred_class)
+#     accuracyDict['Decision Tree'] = accuracy * 100
+# disTree()
+
+# #Random Forest Model
+# def randFor():
+#     rf = RandomForestClassifier(n_estimators=20, random_state=1)
+#     rf.fit(X_train,y_train)
+#     y_pred_class = rf.predict(X_test)
+#     accuracy = evalModel(rf, y_test, y_pred_class)
+#     accuracyDict['Random Forest'] = accuracy * 100
+# randFor()
 
 print("accuracyDict:\n")
 print(json.dumps(accuracyDict, indent=1))
