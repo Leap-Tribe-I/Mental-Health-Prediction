@@ -30,9 +30,12 @@ from sklearn.linear_model import LogisticRegression
 # sklearn modules for model creation
 from sklearn.neighbors import KNeighborsClassifier
 
-# sklearn module for tunning
+# sklearn module for tuning with GridSearchCV
 from sklearn.model_selection import GridSearchCV
 
+# sklearn module for tuning with RandomizedSearchCV
+from sklearn.model_selection import RandomizedSearchCV
+from scipy.stats import randint as sp_randint
 
 # data loading
 #enter the location of your input file
@@ -178,16 +181,35 @@ def log_reg_mod_tuning():
                   'multi_class':['ovr','multinomial'],
                   'max_iter':[100,200,300,400,500]}
     log_reg = LogisticRegression()
-    grid = GridSearchCV(log_reg, param_grid, cv=5, scoring='accuracy')
-    grid.fit(X_train,y_train)
-    print("Best parameters: ", grid.best_params_)
-    print("Best cross-validation score: ", grid.best_score_*100, "%")
-    print("Best estimator: ", grid.best_estimator_)
-    lr = grid.best_estimator_
+    grid_search = GridSearchCV(log_reg, param_grid, cv=5, scoring='accuracy')
+    grid_search.fit(X_train,y_train)
+    print("Best parameters: ", grid_search.best_params_)
+    print("Best cross-validation score: ", grid_search.best_score_*100, "%")
+    print("Best estimator: ", grid_search.best_estimator_)
+    lr = grid_search.best_estimator_
     y_pred_class = lr.predict(X_test)
     accuracy = evalModel(lr, y_test, y_pred_class)
     accuracyDict['Log_Reg_mod_tuning'] = accuracy * 100
 log_reg_mod_tuning()
+
+# tuning the logistic regression model with RandomizedSearchCV
+def log_reg_mod_tuning_rand():
+    print("\nTuning the Logistic Regression Model with RandomizedSearchCV\n")
+    param_dist = {"C": sp_randint(1,100),
+                  "solver": ["newton-cg", "lbfgs", "sag"],
+                  "multi_class": ["ovr", "multinomial"],
+                  "max_iter": sp_randint(100,500)}
+    log_reg = LogisticRegression()
+    rand_search = RandomizedSearchCV(log_reg, param_dist, cv=5, scoring='accuracy')
+    rand_search.fit(X_train,y_train)
+    print("Best parameters: ", rand_search.best_params_)
+    print("Best cross-validation score: ", rand_search.best_score_*100, "%")
+    print("Best estimator: ", rand_search.best_estimator_)
+    lr = rand_search.best_estimator_
+    y_pred_class = lr.predict(X_test)
+    accuracy = evalModel(lr, y_test, y_pred_class)
+    accuracyDict['Log_Reg_mod_tuning_rand'] = accuracy * 100
+log_reg_mod_tuning_rand()
 
 # tuning the KNN model with GridSearchCV
 def tuneKNN():
@@ -207,6 +229,24 @@ def tuneKNN():
     accuracyDict['KNN'] = accuracy * 100
 tuneKNN()
 
+# tuning the KNN model with RandomizedSearchCV
+def tuneKNN_rand():
+    print("\nTuning KNN model with RandomizedSearchCV\n")
+    param_dist = {"n_neighbors": sp_randint(1,100),
+                  "weights": ["uniform", "distance"],
+                  "algorithm": ["auto", "ball_tree", "kd_tree", "brute"],
+                  "leaf_size": sp_randint(10,100)}
+    grid = RandomizedSearchCV(KNeighborsClassifier(), param_dist, cv=5)
+    grid.fit(X_train,y_train)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
+    knn = grid.best_estimator_
+    y_pred_class = knn.predict(X_test)
+    accuracy = evalModel(knn, y_test, y_pred_class)
+    accuracyDict['KNN_rand'] = accuracy * 100
+tuneKNN_rand()
+
 # tuning the Decision Tree model with GridSearchCV
 def tuneDTree():
     print("\nTuning Decision Tree model with GridSearchCV\n")
@@ -224,6 +264,24 @@ def tuneDTree():
     accuracy = evalModel(dt, y_test, y_pred_class)
     accuracyDict['Decision_Tree'] = accuracy * 100
 tuneDTree()
+
+# tuning the Decision Tree model with RandomizedSearchCV
+def tuneDTree_rand():
+    print("\nTuning Decision Tree model with RandomizedSearchCV\n")
+    param_dist = {"criterion": ["gini", "entropy"],
+                  "max_depth": sp_randint(1,100),
+                  "min_samples_split": sp_randint(2,10),
+                  "random_state": [0]}
+    grid = RandomizedSearchCV(DecisionTreeClassifier(), param_dist, cv=5)
+    grid.fit(X_train,y_train)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
+    dt = grid.best_estimator_
+    y_pred_class = dt.predict(X_test)
+    accuracy = evalModel(dt, y_test, y_pred_class)
+    accuracyDict['Decision_Tree_rand'] = accuracy * 100
+tuneDTree_rand()
 
 # tuning the Random Forest model with GridSearchCV
 def tuneRF():
@@ -243,6 +301,25 @@ def tuneRF():
     accuracy = evalModel(rf, y_test, y_pred_class)
     accuracyDict['Random_Forest'] = accuracy * 100
 tuneRF()
+
+# tuning the Random Forest model with RandomizedSearchCV
+def tuneRF_rand():
+    print("\nTuning Random Forest model with RandomizedSearchCV\n")
+    param_dist = {"n_estimators": sp_randint(10,100),
+                  "max_depth": sp_randint(1,100),
+                  "min_samples_split": sp_randint(2,10),
+                  "criterion": ["gini", "entropy"],
+                  "random_state": [0]}
+    grid = RandomizedSearchCV(RandomForestClassifier(), param_dist, cv=5)
+    grid.fit(X_train,y_train)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
+    rf = grid.best_estimator_
+    y_pred_class = rf.predict(X_test)
+    accuracy = evalModel(rf, y_test, y_pred_class)
+    accuracyDict['Random_Forest_rand'] = accuracy * 100
+tuneRF_rand()
 
 # #Logistic Regression Model
 # def log_reg_mod():
