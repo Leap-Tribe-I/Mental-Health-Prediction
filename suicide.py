@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import os
+import json
 
 # modules for encoding
 from sklearn import preprocessing
@@ -22,6 +23,9 @@ from sklearn.linear_model import LogisticRegression
 
 # sklearn modules for model creation
 from sklearn.neighbors import KNeighborsClassifier
+
+# sklearn module for tunning
+from sklearn.model_selection import GridSearchCV
 
 
 # data loading
@@ -171,14 +175,16 @@ def log_reg_mod():
     accuracyDict['Log_Reg'] = accuracy * 100
 log_reg_mod()
 
-def kNearest():
+#knn Model
+def knn():
     knn = KNeighborsClassifier(n_neighbors=15)
     knn.fit(X_train,y_train)
     y_pred_class = knn.predict(X_test)
     accuracy = evalModel(knn, y_test, y_pred_class)
     accuracyDict['KNN'] = accuracy * 100
-kNearest()
+knn()
 
+#Decision Tree Model
 def disTree():
     dt = DecisionTreeClassifier(criterion='entropy')
     dt.fit(X_train,y_train)
@@ -187,6 +193,7 @@ def disTree():
     accuracyDict['Decision Tree'] = accuracy * 100
 disTree()
 
+#Random Forest Model
 def randFor():
     rf = RandomForestClassifier(n_estimators=20, random_state=1)
     rf.fit(X_train,y_train)
@@ -194,4 +201,6 @@ def randFor():
     accuracy = evalModel(rf, y_test, y_pred_class)
     accuracyDict['Random Forest'] = accuracy * 100
 randFor()
-print(accuracyDict)
+
+print("accuracyDict:\n")
+print(json.dumps(accuracyDict, indent=1))
