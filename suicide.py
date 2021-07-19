@@ -452,52 +452,52 @@ def bagging_rand():
 bagging_rand()
 
 
-# Stacking
-# tuning stacking model with GridSearchCV
-def stacking():
-    # rf = RandomForestClassifier(n_estimators=20, random_state=1)
-    # ada = AdaBoostClassifier(n_estimators=20, learning_rate=0.1, random_state=1)
-    # bag = BaggingClassifier(n_estimators=20, max_samples=0.1, random_state=1)
-    # classifiers=[rf,ada,bag]
-    print("\nTuning Stacking model with GridSearchCV\n")
-    param_grid = {'n_estimators':[10,20,30,40,50,60,70,80,90,100],
-                  'max_samples':[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
-                  'bootstrap':[True,False],
-                  'bootstrap_features':[True,False],
-                  'random_state':[0]}
-    grid = GridSearchCV(StackingClassifier(), param_grid, cv=5)
-    grid.fit(X_train,y_train)
-    print("Best parameters: ", grid.best_params_)
-    print("Best cross-validation score: ", grid.best_score_*100, "%")
-    print("Best estimator: ", grid.best_estimator_)
-    stack = grid.best_estimator_
-    y_pred_class = stack.predict(X_test)
-    accuracy = evalModel(stack, y_test, y_pred_class)
-    accuracyDict['Stacking'] = accuracy * 100
-stacking()
+# # Stacking
+# # tuning stacking model with GridSearchCV
+# def stacking():
+#     # rf = RandomForestClassifier(n_estimators=20, random_state=1)
+#     # ada = AdaBoostClassifier(n_estimators=20, learning_rate=0.1, random_state=1)
+#     # bag = BaggingClassifier(n_estimators=20, max_samples=0.1, random_state=1)
+#     # classifiers=[rf,ada,bag]
+#     print("\nTuning Stacking model with GridSearchCV\n")
+#     param_grid = {'n_estimators':[10,20,30,40,50,60,70,80,90,100],
+#                   'max_samples':[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
+#                   'bootstrap':[True,False],
+#                   'bootstrap_features':[True,False],
+#                   'random_state':[0]}
+#     grid = GridSearchCV(StackingClassifier(), param_grid, cv=5)
+#     grid.fit(X_train,y_train)
+#     print("Best parameters: ", grid.best_params_)
+#     print("Best cross-validation score: ", grid.best_score_*100, "%")
+#     print("Best estimator: ", grid.best_estimator_)
+#     stack = grid.best_estimator_
+#     y_pred_class = stack.predict(X_test)
+#     accuracy = evalModel(stack, y_test, y_pred_class)
+#     accuracyDict['Stacking'] = accuracy * 100
+# stacking()
 
-# tuning stacking model with RandomizedSearchCV
-def stacking_rand():
-    # rf = RandomForestClassifier(n_estimators=20, random_state=1)
-    # ada = AdaBoostClassifier(n_estimators=20, learning_rate=0.1, random_state=1)
-    # bag = BaggingClassifier(n_estimators=20, max_samples=0.1, random_state=1)
-    # classifiers=[rf,ada,bag]
-    print("\nTuning Stacking model with RandomizedSearchCV\n")
-    param_dist = {"n_estimators": sp_randint(10,100),
-                  "max_samples": [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
-                  "bootstrap": [True,False],
-                  "bootstrap_features": [True,False],
-                  "random_state": [0]}
-    grid = RandomizedSearchCV(StackingClassifier(), param_dist, cv=5)
-    grid.fit(X_train,y_train)
-    print("Best parameters: ", grid.best_params_)
-    print("Best cross-validation score: ", grid.best_score_*100, "%")
-    print("Best estimator: ", grid.best_estimator_)
-    stack = grid.best_estimator_
-    y_pred_class = stack.predict(X_test)
-    accuracy = evalModel(stack, y_test, y_pred_class)
-    accuracyDict['Stacking_rand'] = accuracy * 100
-stacking_rand()
+# # tuning stacking model with RandomizedSearchCV
+# def stacking_rand():
+#     # rf = RandomForestClassifier(n_estimators=20, random_state=1)
+#     # ada = AdaBoostClassifier(n_estimators=20, learning_rate=0.1, random_state=1)
+#     # bag = BaggingClassifier(n_estimators=20, max_samples=0.1, random_state=1)
+#     # classifiers=[rf,ada,bag]
+#     print("\nTuning Stacking model with RandomizedSearchCV\n")
+#     param_dist = {"n_estimators": sp_randint(10,100),
+#                   "max_samples": [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
+#                   "bootstrap": [True,False],
+#                   "bootstrap_features": [True,False],
+#                   "random_state": [0]}
+#     grid = RandomizedSearchCV(StackingClassifier(), param_dist, cv=5)
+#     grid.fit(X_train,y_train)
+#     print("Best parameters: ", grid.best_params_)
+#     print("Best cross-validation score: ", grid.best_score_*100, "%")
+#     print("Best estimator: ", grid.best_estimator_)
+#     stack = grid.best_estimator_
+#     y_pred_class = stack.predict(X_test)
+#     accuracy = evalModel(stack, y_test, y_pred_class)
+#     accuracyDict['Stacking_rand'] = accuracy * 100
+# stacking_rand()
 
 
 print("accuracyDict:\n")
