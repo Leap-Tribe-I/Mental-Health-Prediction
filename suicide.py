@@ -6,6 +6,10 @@ suicide prediction program is working
 will take time so dont quit in middle
 '''
 
+# ignore all warnings
+import warnings
+warnings.filterwarnings("ignore")
+
 # import modules
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -31,6 +35,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import StackingClassifier
 
 # sklearn module for tuning
 from sklearn.model_selection import GridSearchCV
@@ -57,7 +63,8 @@ else:
 variable = ['family_size', 'annual_income', 'eating_habits', 
             'addiction_friend', 'addiction', 'medical_history', 
             'depressed', 'anxiety', 'happy_currently', 'suicidal_thoughts']
-if variable == list(data):
+check = all(item in list(data) for item in variable)
+if check is True:
     print("Data is loaded")
 else:
     print("Dataset doesnot contain: ", variable)
@@ -173,6 +180,8 @@ def evalModel(model, y_test, y_pred_class):
     plt.show()
     return acc_score
 
+
+# LR - Logistic Regression
 # tuning the logistic regression model with Gridsearchcv
 def log_reg_mod_tuning():
     print("\nTuning the Logistic Regression Model with GridSearchCV\n")
@@ -183,9 +192,9 @@ def log_reg_mod_tuning():
     log_reg = LogisticRegression()
     grid_search = GridSearchCV(log_reg, param_grid, cv=5, scoring='accuracy')
     grid_search.fit(X_train,y_train)
-    # print("Best parameters: ", grid_search.best_params_)
-    # print("Best cross-validation score: ", grid_search.best_score_*100, "%")
-    # print("Best estimator: ", grid_search.best_estimator_)
+    print("Best parameters: ", grid_search.best_params_)
+    print("Best cross-validation score: ", grid_search.best_score_*100, "%")
+    print("Best estimator: ", grid_search.best_estimator_)
     lr = grid_search.best_estimator_
     y_pred_class = lr.predict(X_test)
     accuracy = evalModel(lr, y_test, y_pred_class)
@@ -202,15 +211,17 @@ def log_reg_mod_tuning_rand():
     log_reg = LogisticRegression()
     rand_search = RandomizedSearchCV(log_reg, param_dist, cv=5, scoring='accuracy')
     rand_search.fit(X_train,y_train)
-    # print("Best parameters: ", rand_search.best_params_)
-    # print("Best cross-validation score: ", rand_search.best_score_*100, "%")
-    # print("Best estimator: ", rand_search.best_estimator_)
+    print("Best parameters: ", rand_search.best_params_)
+    print("Best cross-validation score: ", rand_search.best_score_*100, "%")
+    print("Best estimator: ", rand_search.best_estimator_)
     lr = rand_search.best_estimator_
     y_pred_class = lr.predict(X_test)
     accuracy = evalModel(lr, y_test, y_pred_class)
     accuracyDict['Log_Reg_mod_tuning_rand'] = accuracy * 100
 log_reg_mod_tuning_rand()
 
+
+# KNN - K-Nearest Neighbors
 # tuning the KNN model with GridSearchCV
 def tuneKNN():
     print("\nTuning KNN model with GridSearchCV\n")
@@ -220,9 +231,9 @@ def tuneKNN():
                   'leaf_size':[10,20,30,40,50,60,70,80]}
     grid = GridSearchCV(KNeighborsClassifier(), param_grid, cv=5)
     grid.fit(X_train,y_train)
-    # print("Best parameters: ", grid.best_params_)
-    # print("Best cross-validation score: ", grid.best_score_*100, "%")
-    # print("Best estimator: ", grid.best_estimator_)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
     knn = grid.best_estimator_
     y_pred_class = knn.predict(X_test)
     accuracy = evalModel(knn, y_test, y_pred_class)
@@ -238,15 +249,17 @@ def tuneKNN_rand():
                   "leaf_size": sp_randint(10,100)}
     grid = RandomizedSearchCV(KNeighborsClassifier(), param_dist, cv=5)
     grid.fit(X_train,y_train)
-    # print("Best parameters: ", grid.best_params_)
-    # print("Best cross-validation score: ", grid.best_score_*100, "%")
-    # print("Best estimator: ", grid.best_estimator_)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
     knn = grid.best_estimator_
     y_pred_class = knn.predict(X_test)
     accuracy = evalModel(knn, y_test, y_pred_class)
     accuracyDict['KNN_rand'] = accuracy * 100
 tuneKNN_rand()
 
+
+# DT - Decision Tree
 # tuning the Decision Tree model with GridSearchCV
 def tuneDTree():
     print("\nTuning Decision Tree model with GridSearchCV\n")
@@ -256,9 +269,9 @@ def tuneDTree():
                   'random_state':[0]}
     grid = GridSearchCV(DecisionTreeClassifier(), param_grid, cv=5)
     grid.fit(X_train,y_train)
-    # print("Best parameters: ", grid.best_params_)
-    # print("Best cross-validation score: ", grid.best_score_*100, "%")
-    # print("Best estimator: ", grid.best_estimator_)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
     dt = grid.best_estimator_
     y_pred_class = dt.predict(X_test)
     accuracy = evalModel(dt, y_test, y_pred_class)
@@ -274,15 +287,17 @@ def tuneDTree_rand():
                   "random_state": [0]}
     grid = RandomizedSearchCV(DecisionTreeClassifier(), param_dist, cv=5)
     grid.fit(X_train,y_train)
-    # print("Best parameters: ", grid.best_params_)
-    # print("Best cross-validation score: ", grid.best_score_*100, "%")
-    # print("Best estimator: ", grid.best_estimator_)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
     dt = grid.best_estimator_
     y_pred_class = dt.predict(X_test)
     accuracy = evalModel(dt, y_test, y_pred_class)
     accuracyDict['Decision_Tree_rand'] = accuracy * 100
 tuneDTree_rand()
 
+
+# RF - Random Forest
 # tuning the Random Forest model with GridSearchCV
 def tuneRF():
     print("\nTuning Random Forest model with GridSearchCV\n")
@@ -293,9 +308,9 @@ def tuneRF():
                   'random_state':[0]}
     grid = GridSearchCV(RandomForestClassifier(), param_grid, cv=5)
     grid.fit(X_train,y_train)
-    # print("Best parameters: ", grid.best_params_)
-    # print("Best cross-validation score: ", grid.best_score_*100, "%")
-    # print("Best estimator: ", grid.best_estimator_)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
     rf = grid.best_estimator_
     y_pred_class = rf.predict(X_test)
     accuracy = evalModel(rf, y_test, y_pred_class)
@@ -312,14 +327,15 @@ def tuneRF_rand():
                   "random_state": [0]}
     grid = RandomizedSearchCV(RandomForestClassifier(), param_dist, cv=5)
     grid.fit(X_train,y_train)
-    # print("Best parameters: ", grid.best_params_)
-    # print("Best cross-validation score: ", grid.best_score_*100, "%")
-    # print("Best estimator: ", grid.best_estimator_)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
     rf = grid.best_estimator_
     y_pred_class = rf.predict(X_test)
     accuracy = evalModel(rf, y_test, y_pred_class)
     accuracyDict['Random_Forest_rand'] = accuracy * 100
 tuneRF_rand()
+
 
 # #Logistic Regression Model
 # def log_reg_mod():
@@ -359,17 +375,19 @@ tuneRF_rand()
 #     accuracyDict['Random Forest'] = accuracy * 100
 # randFor()
 
-#  tuning boosting model with GridSearchCV
+
+# Boosting
+# tuning boosting model with GridSearchCV
 def boosting():
-    print("\nTuning AdaBoost model\n")
+    print("\nTuning Boosting model with GridSearchCV\n")
     param_grid = {'n_estimators':[10,20,30,40,50,60,70,80,90,100],
                   'learning_rate':[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
                   'random_state':[0]}
     grid = GridSearchCV(AdaBoostClassifier(), param_grid, cv=5)
     grid.fit(X_train,y_train)
-    # print("Best parameters: ", grid.best_params_)
-    # print("Best cross-validation score: ", grid.best_score_*100, "%")
-    # print("Best estimator: ", grid.best_estimator_)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
     ada = grid.best_estimator_
     y_pred_class = ada.predict(X_test)
     accuracy = evalModel(ada, y_test, y_pred_class)
@@ -378,20 +396,124 @@ boosting()
 
 # tuning boosting model with RandomizedSearchCV
 def boosting_rand():
-    print("\nTuning AdaBoost model with RandomizedSearchCV\n")
+    print("\nTuning Boosting model with RandomizedSearchCV\n")
     param_dist = {"n_estimators": sp_randint(10,100),
                   "learning_rate": [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
                   "random_state": [0]}
     grid = RandomizedSearchCV(AdaBoostClassifier(), param_dist, cv=5)
     grid.fit(X_train,y_train)
-    # print("Best parameters: ", grid.best_params_)
-    # print("Best cross-validation score: ", grid.best_score_*100, "%")
-    # print("Best estimator: ", grid.best_estimator_)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
     ada = grid.best_estimator_
     y_pred_class = ada.predict(X_test)
     accuracy = evalModel(ada, y_test, y_pred_class)
     accuracyDict['AdaBoost_rand'] = accuracy * 100
 boosting_rand()
 
+
+# Bagging
+# tuning bagging model with GridSearchCV
+def bagging():
+    print("\nTuning Bagging model with GridSearchCV\n")
+    param_grid = {'n_estimators':[10,20,30,40,50,60,70,80,90,100],
+                  'max_samples':[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
+                  'bootstrap':[True,False],
+                  'bootstrap_features':[True,False],
+                  'random_state':[0]}
+    grid = GridSearchCV(BaggingClassifier(), param_grid, cv=5)
+    grid.fit(X_train,y_train)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
+    bag = grid.best_estimator_
+    y_pred_class = bag.predict(X_test)
+    accuracy = evalModel(bag, y_test, y_pred_class)
+    accuracyDict['Bagging'] = accuracy * 100
+bagging()
+
+# tuning bagging model with RandomizedSearchCV
+def bagging_rand():
+    print("\nTuning Bagging model with RandomizedSearchCV\n")
+    param_dist = {"n_estimators": sp_randint(10,100),
+                  "max_samples": [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
+                  "bootstrap": [True,False],
+                  "bootstrap_features": [True,False],
+                  "random_state": [0]}
+    grid = RandomizedSearchCV(BaggingClassifier(), param_dist, cv=5)
+    grid.fit(X_train,y_train)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
+    bag = grid.best_estimator_
+    y_pred_class = bag.predict(X_test)
+    accuracy = evalModel(bag, y_test, y_pred_class)
+    accuracyDict['Bagging_rand'] = accuracy * 100
+bagging_rand()
+
+
+# Stacking
+# tuning stacking model with GridSearchCV
+def stacking():
+    # rf = RandomForestClassifier(n_estimators=20, random_state=1)
+    # ada = AdaBoostClassifier(n_estimators=20, learning_rate=0.1, random_state=1)
+    # bag = BaggingClassifier(n_estimators=20, max_samples=0.1, random_state=1)
+    # classifiers=[rf,ada,bag]
+    print("\nTuning Stacking model with GridSearchCV\n")
+    param_grid = {'n_estimators':[10,20,30,40,50,60,70,80,90,100],
+                  'max_samples':[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
+                  'bootstrap':[True,False],
+                  'bootstrap_features':[True,False],
+                  'random_state':[0]}
+    grid = GridSearchCV(StackingClassifier(), param_grid, cv=5)
+    grid.fit(X_train,y_train)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
+    stack = grid.best_estimator_
+    y_pred_class = stack.predict(X_test)
+    accuracy = evalModel(stack, y_test, y_pred_class)
+    accuracyDict['Stacking'] = accuracy * 100
+stacking()
+
+# tuning stacking model with RandomizedSearchCV
+def stacking_rand():
+    # rf = RandomForestClassifier(n_estimators=20, random_state=1)
+    # ada = AdaBoostClassifier(n_estimators=20, learning_rate=0.1, random_state=1)
+    # bag = BaggingClassifier(n_estimators=20, max_samples=0.1, random_state=1)
+    # classifiers=[rf,ada,bag]
+    print("\nTuning Stacking model with RandomizedSearchCV\n")
+    param_dist = {"n_estimators": sp_randint(10,100),
+                  "max_samples": [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
+                  "bootstrap": [True,False],
+                  "bootstrap_features": [True,False],
+                  "random_state": [0]}
+    grid = RandomizedSearchCV(StackingClassifier(), param_dist, cv=5)
+    grid.fit(X_train,y_train)
+    print("Best parameters: ", grid.best_params_)
+    print("Best cross-validation score: ", grid.best_score_*100, "%")
+    print("Best estimator: ", grid.best_estimator_)
+    stack = grid.best_estimator_
+    y_pred_class = stack.predict(X_test)
+    accuracy = evalModel(stack, y_test, y_pred_class)
+    accuracyDict['Stacking_rand'] = accuracy * 100
+stacking_rand()
+
+
 print("accuracyDict:\n")
 print(json.dumps(accuracyDict, indent=1))
+
+
+# save accuracyDict accuracy Bar Graph to file
+s = pd.Series(accuracyDict)
+s = s.sort_values(ascending=False)
+plt.figure(figsize=(12,8))
+ax = s.plot(kind='bar') 
+for p in ax.patches:
+    ax.annotate(str(round(p.get_height(),2)), (p.get_x() * 1.005, p.get_height() * 1.005))
+plt.ylim([70.0, 90.0])
+plt.xlabel('Method')
+plt.ylabel('Percentage')
+plt.title('Success of methods')
+plt.show()
+plt.savefig('Accuracy Graph.png')
