@@ -59,7 +59,7 @@ Tuning the Logistic Regression Model with GridSearchCV
 
 Best parameters:  {'C': 1, 'max_iter': 100, 'multi_class': 'ovr', 'solver': 'newton-cg'}
 Best cross-validation score:  77.05882352941177 %
-Best estimator:  LogisticRegression(C=1, multi_class='ovr', solver='newton-cg')
+Best estimator:  LogisticRegression(C=1, multi_class='ovr', solver='newton-cg')  
 
 Tuning KNN model with GridSearchCV
 
