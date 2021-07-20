@@ -40,15 +40,25 @@ It will plot the accuracy of all the implemented algorithms in a bar graph
 Correlation Matrix:
 
                    family_size  annual_income  eating_habits  addiction_friend  ...  depressed   anxiety  happy_currently  suicidal_thoughts
+
 family_size           1.000000      -0.042214       0.066318          0.023710  ...   0.053648  0.162366        -0.050309           0.080420
+
 annual_income        -0.042214       1.000000      -0.089304          0.119274  ...  -0.144553 -0.133055         0.042194          -0.144129
+
 eating_habits         0.066318      -0.089304       1.000000         -0.063661  ...  -0.033087  0.061451        -0.109776           0.083808
+
 addiction_friend      0.023710       0.119274      -0.063661          1.000000  ...  -0.075882  0.100138        -0.034929          -0.091548
+
 addiction             0.032259       0.055304       0.068245          0.428328  ...   0.040946  0.097530        -0.078782          -0.032259
+
 medical_history       0.175749      -0.264076       0.106260         -0.093513  ...   0.280714  0.412722        -0.190702           0.266967
+
 depressed             0.053648      -0.144553      -0.033087         -0.075882  ...   1.000000  0.285102        -0.498167           0.297989
+
 anxiety               0.162366      -0.133055       0.061451          0.100138  ...   0.285102  1.000000        -0.245867           0.377108
+
 happy_currently      -0.050309       0.042194      -0.109776         -0.034929  ...  -0.498167 -0.245867         1.000000          -0.408260
+
 suicidal_thoughts     0.080420      -0.144129       0.083808         -0.091548  ...   0.297989  0.377108        -0.408260           1.000000
 
 [10 rows x 10 columns]
@@ -136,15 +146,26 @@ accuracyDict:
 
 {
  "Log_Reg_mod_tuning": 85.71428571428571,
+ 
  "KNN": 90.47619047619048,
+ 
  "Decision_Tree": 80.95238095238095,
+ 
  "Random_Forest": 85.71428571428571,
+ 
  "AdaBoost": 80.95238095238095,
+ 
  "Bagging": 90.47619047619048,
+ 
  "Log_Reg_mod_tuning_rand": 85.71428571428571,
+ 
  "KNN_rand": 85.71428571428571,
+ 
  "Decision_Tree_rand": 76.19047619047619,
+ 
  "Random_Forest_rand": 85.71428571428571,
+ 
  "AdaBoost_rand": 80.95238095238095,
+ 
  "Bagging_rand": 85.71428571428571
 }
