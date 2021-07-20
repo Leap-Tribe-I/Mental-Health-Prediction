@@ -162,6 +162,7 @@ accuracyDict = {}
 # plt.xticks(range(X.shape[1]), labels, rotation='vertical')
 # plt.xlim([-1, X.shape[1]])
 # plt.show()
+# plt.savefig('FeatureImportance.png')
 
 #Tuning and evaluation of models
 def evalModel(model, y_test, y_pred_class):
