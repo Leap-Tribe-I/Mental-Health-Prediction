@@ -8,26 +8,35 @@ will take time so dont quit in middle
 import warnings
 warnings.filterwarnings("ignore")
 # import modules
+
+#importing src moduls
+import src.dataCleaningEncoding as dt
+import src.dataSplit as spl 
+import src.correlationMatrix as cm
+import src.dataFeaturing as ft
+import src.tuningGrid as gcv
+import src.modelEvaluator as ev
+import src.tuningRand as rcv
+import src.accuracyPlot as ap
+
+#importing basic python libraries
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import seaborn as sns
 import os
 import json
-import src.dataCleaningEncoding as dt
-import src.dataSplit as spl 
-import src.dataFeaturing as ft
-import src.tuningGrid as gcv
-import src.modelEvaluator as ev
-import src.tuningRand as rcv
-import src.accuracyPlot as ap
+
 # data loading
 #enter the location of your input file
+
 input_location = input("Enter your input file location: ")
+
 # check if the file exists
 while not os.path.isfile(input_location):
     print("File does not exist")
     exit()
+
 # Check input and read file
 if(input_location.endswith(".csv")):
     data = pd.read_csv(input_location)
@@ -40,17 +49,7 @@ else:
 #calling dataMagic function from src.data_cleaning_encoding to clean and encode the data
 data = dt.dataMagic(data)
 
-#creating a covarinance matrix of the encoded data to visualize correlation between data points
-corr = data.corr()
-#printing the Covarinance matrix
-print("\n")
-print("Correlation Matrix:\n")
-print(corr)
-print("\n")
-f, ax = plt.subplots(figsize=(9, 9))
-sns.heatmap(corr, vmax=.8, square=True, annot=True)
-plt.show()
-
+cm.corrMat(data)
 #calling the datasplit function from src.data_split to split our data into training and testing sets
 #returning the independent and dpendent variables and storing the below
 X, y, X_train, X_test, y_train, y_test = spl.datasplit(data)
@@ -93,5 +92,6 @@ rcv.bagging_rand(X_train, X_test, y_train, y_test, accuracyDict)
 #printing the accuracyDict containing accuracy scores of different algorithms
 print("accuracyDict:\n")
 print(json.dumps(accuracyDict, indent=1))
+
 #calling accuracy_graph function from src.accuracy_plot to plot the accuracy scores of different algorithms
 ap.accuracy_graph(accuracyDict)
