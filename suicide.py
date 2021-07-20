@@ -4,6 +4,9 @@ suicide prediction program is working
             but 
 will take time so dont quit in middle
 '''
+#ignore warnings
+import warnings
+warnings.filterwarnings("ignore")
 # import modules
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -11,13 +14,13 @@ import numpy as np
 import seaborn as sns
 import os
 import json
-import src.data_cleaning_encoding as dt
-import src.data_split as spl 
-import src.find_feature_variable as ft
-import src.grid_searchCV_algos as gcv
-import src.model_evaluator as ev
-import src.randomized_searchCV_algos as rcv
-import src.accuracy_plot as ap
+import src.dataCleaningEncoding as dt
+import src.dataSplit as spl 
+import src.dataFeaturing as ft
+import src.tuningGrid as gcv
+import src.modelEvaluator as ev
+import src.tuningRand as rcv
+import src.accuracyPlot as ap
 # data loading
 #enter the location of your input file
 input_location = input("Enter your input file location: ")
