@@ -84,11 +84,10 @@ else:
 # missing_data = pd.concat([total, precentage], axis=1, keys=['Total', 'Precentage'])
 # print("Missing Data:\n")
 # print(missing_data)
+# print("\n")
 
-# # fill missing data with mean value
 
-
-# # drop unnecessary columns
+# drop unnecessary columns
 if 'Timestamp' in data:
     data = data.drop(['Timestamp'], axis=1)
 # print("\n")   
@@ -122,15 +121,15 @@ for feature in data:
 # print("Encoded data saved as: " + input_location + '_encoded.csv')
 
 # correlation matrix
-# corr = data.corr()
-# print("\n")
-# print("Correlation Matrix:\n")
-# print(corr)
-# print("\n")
-# f, ax = plt.subplots(figsize=(9, 9))
-# sns.heatmap(corr, vmax=.8, square=True, annot=True)
-# plt.show()
-# plt.savefig('matrix.png')
+corr = data.corr()
+print("\n")
+print("Correlation Matrix:\n")
+print(corr)
+print("\n")
+f, ax = plt.subplots(figsize=(9, 9))
+sns.heatmap(corr, vmax=.8, square=True, annot=True)
+plt.show()
+plt.savefig('matrix.png')
 
 #Splitting the data
 independent_vars = ['family_size', 'annual_income', 'eating_habits', 
