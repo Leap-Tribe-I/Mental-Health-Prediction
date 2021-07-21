@@ -1,30 +1,27 @@
 # importing modules
 from sklearn import preprocessing
 
-# data preprocessing
-# print(data.info())
-# print("\n")
-# print("Some of Data:\n")
-# print(data.head())
-# print("\n")
-
-
-# data Cleaning
-# total = data.isnull().sum()
-# precentage = (total/len(data))*100
-# missing_data = pd.concat([total, precentage], axis=1, keys=['Total', 'Precentage'])
-# print("Missing Data:\n")
-# print(missing_data)
-# print("\n")
-
 def dce(data):
+    DataCleaning(data)
+    DataEncoding(data)
+
+def DataCleaning(data):
+    # data Cleaning
+    # total = data.isnull().sum()
+    # precentage = (total/len(data))*100
+    # missing_data = pd.concat([total, precentage], axis=1, keys=['Total', 'Precentage'])
+    # print("Missing Data:\n")
+    # print(missing_data)
+    # print("\n")
     # drop unnecessary columns
     if 'Timestamp' in data:
         data = data.drop(['Timestamp'], axis=1)
     # print("\n")   
     # print("Dataset afterdropping columns:\n")
     # print(data.head())
+    return data
 
+def DataEncoding(data):
     # data encoding
     labelDictionary = {}
     for feature in data:
@@ -50,5 +47,4 @@ def dce(data):
     # data.to_csv('_encoded.csv')
     # print("\n")
     # print("Encoded data saved as: _encoded.csv")
-
     return data

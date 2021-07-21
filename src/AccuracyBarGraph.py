@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def graph(accuracyDict):
+def AccuracyPlot(accuracyDict):
     # save accuracyDict accuracy Bar Graph to file
     s = pd.Series(accuracyDict)
     s = s.sort_values(ascending=False)

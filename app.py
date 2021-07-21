@@ -8,12 +8,12 @@ will take time so dont quit in middle
 
 # import all parts as module from src
 from src import DataCleaningEncoding
-from src import CorrelationMatrix
-from src import DataSplitting
-from src import FeatureImportance
+from src.CorrelationMatrix import CorrMatrix
+from src.DataSplitting import DataSplit
+from src.FeatureImportance import featuring_importance
 import src.TuningWithGridSearchCV as gscv
 import src.TuningWithRandomizedSearchCV as rscv
-from src import AccuracyBarGraph
+from src.AccuracyBarGraph import AccuracyPlot
 
 # ignore all warnings
 import warnings
@@ -62,11 +62,11 @@ else:
 '''
 data = DataCleaningEncoding.dce(data)
 
-CorrelationMatrix.CorrMatrix(data)
+CorrMatrix(data)
 
-X, y, X_train, X_test, y_train, y_test = DataSplitting.DataSplit(data)
+X, y, X_train, X_test, y_train, y_test = DataSplit(data)
 
-FeatureImportance.featuring_importance(X, y)
+featuring_importance(X, y)
 
 #Dictionary to store accuracy results of different algorithms
 accuracyDict = {}
@@ -76,22 +76,10 @@ accuracyDict = {}
 '''
 
 # Tuning with GridSearchCV
-gscv.log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict)
-gscv.tuneKNN(X_train, X_test, y_train, y_test, accuracyDict)
-gscv.tuneDT(X_train, X_test, y_train, y_test, accuracyDict)
-gscv.tuneRF(X_train, X_test, y_train, y_test, accuracyDict)
-gscv.boosting(X_train, X_test, y_train, y_test, accuracyDict)
-gscv.bagging(X_train, X_test, y_train, y_test, accuracyDict)
-# gscv.stacking(X_train, X_test, y_train, y_test, accuracyDict)
+gscv.GridSearchCV(X_train, X_test, y_train, y_test, accuracyDict)
 
 # Tuning with RandomizedSearchCV
-rscv.log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict)
-rscv.tuneKNN(X_train, X_test, y_train, y_test, accuracyDict)
-rscv.tuneDT(X_train, X_test, y_train, y_test, accuracyDict)
-rscv.tuneRF(X_train, X_test, y_train, y_test, accuracyDict)
-rscv.boosting(X_train, X_test, y_train, y_test, accuracyDict)
-rscv.bagging(X_train, X_test, y_train, y_test, accuracyDict)
-# rscv.stacking(X_train, X_test, y_train, y_test, accuracyDict)
+rscv.RandomSearchSearchCV(X_train, X_test, y_train, y_test, accuracyDict)
 
 print("accuracyDict:\n")
 print(json.dumps(accuracyDict, indent=1))
@@ -100,7 +88,7 @@ print(json.dumps(accuracyDict, indent=1))
 - Accuracy Bar Graph
 '''
 
-AccuracyBarGraph.graph(accuracyDict)
+AccuracyPlot(accuracyDict)
 
 '''
 - Modelling

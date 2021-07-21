@@ -13,6 +13,16 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import StackingClassifier
 
+# Run all model in one shot
+def GridSearchCV(X_train, X_test, y_train, y_test, accuracyDict):
+    log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict)
+    tuneKNN(X_train, X_test, y_train, y_test, accuracyDict)
+    tuneDT(X_train, X_test, y_train, y_test, accuracyDict)
+    tuneRF(X_train, X_test, y_train, y_test, accuracyDict)
+    tuneBoosting(X_train, X_test, y_train, y_test, accuracyDict)
+    tuneBagging(X_train, X_test, y_train, y_test, accuracyDict)
+    # tuneStacking(X_train, X_test, y_train, y_test, accuracyDict)
+
 
 # tuning the logistic regression model with Gridsearchcv
 def log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict):
@@ -85,7 +95,7 @@ def tuneRF(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['Random_Forest_tuning_GridSearchCV'] = accuracy * 100
 
 # tuning boosting model with GridSearchCV
-def boosting(X_train, X_test, y_train, y_test, accuracyDict):
+def tuneBoosting(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning Boosting model with GridSearchCV\n")
     param_grid = {'n_estimators':[10,20,30,40,50,60,70,80,90,100],
                   'learning_rate':[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
@@ -101,7 +111,7 @@ def boosting(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['AdaBoost_tuning_GridSearchCV'] = accuracy * 100
 
 # tuning bagging model with GridSearchCV
-def bagging(X_train, X_test, y_train, y_test, accuracyDict):
+def tuneBagging(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning Bagging model with GridSearchCV\n")
     param_grid = {'n_estimators':[10,20,30,40,50,60,70,80,90,100],
                   'max_samples':[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
@@ -119,7 +129,7 @@ def bagging(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['Bagging_tuning_GridSearchCV'] = accuracy * 100
 
 # # tuning stacking model with GridSearchCV
-# def stacking(X_train, X_test, y_train, y_test, accuracyDict):
+# def tuneStacking(X_train, X_test, y_train, y_test, accuracyDict):
 #     # rf = RandomForestClassifier(n_estimators=20, random_state=1)
 #     # ada = AdaBoostClassifier(n_estimators=20, learning_rate=0.1, random_state=1)
 #     # bag = BaggingClassifier(n_estimators=20, max_samples=0.1, random_state=1)
