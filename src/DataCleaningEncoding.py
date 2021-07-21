@@ -4,6 +4,7 @@ from sklearn import preprocessing
 def dce(data):
     DataCleaning(data)
     DataEncoding(data)
+    return data
 
 def DataCleaning(data):
     # data Cleaning

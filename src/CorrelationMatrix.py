@@ -13,3 +13,4 @@ def CorrMatrix(data):
     # sns.heatmap(corr, vmax=.8, square=True, annot=True)
     # plt.show()
     # plt.savefig('matrix.png')
+    return corr

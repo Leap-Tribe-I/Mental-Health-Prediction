@@ -76,10 +76,10 @@ accuracyDict = {}
 '''
 
 # Tuning with GridSearchCV
-gscv.GridSearchCV(X_train, X_test, y_train, y_test, accuracyDict)
+gscv.GridSearch(X_train, X_test, y_train, y_test, accuracyDict)
 
 # Tuning with RandomizedSearchCV
-rscv.RandomSearchSearchCV(X_train, X_test, y_train, y_test, accuracyDict)
+rscv.RandomizedSearch(X_train, X_test, y_train, y_test, accuracyDict)
 
 print("accuracyDict:\n")
 print(json.dumps(accuracyDict, indent=1))

@@ -17,7 +17,7 @@ from sklearn.ensemble import StackingClassifier
 from scipy.stats import randint as sp_randint
 
 # Run all model in one shot
-def RandomSearchSearchCV(X_train, X_test, y_train, y_test, accuracyDict):
+def RandomizedSearch(X_train, X_test, y_train, y_test, accuracyDict):
     log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict)
     tuneKNN(X_train, X_test, y_train, y_test, accuracyDict)
     tuneDT(X_train, X_test, y_train, y_test, accuracyDict)

@@ -14,7 +14,7 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import StackingClassifier
 
 # Run all model in one shot
-def GridSearchCV(X_train, X_test, y_train, y_test, accuracyDict):
+def GridSearch(X_train, X_test, y_train, y_test, accuracyDict):
     log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict)
     tuneKNN(X_train, X_test, y_train, y_test, accuracyDict)
     tuneDT(X_train, X_test, y_train, y_test, accuracyDict)
