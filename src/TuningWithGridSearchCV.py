@@ -23,7 +23,6 @@ def GridSearchCV(X_train, X_test, y_train, y_test, accuracyDict):
     tuneBagging(X_train, X_test, y_train, y_test, accuracyDict)
     # tuneStacking(X_train, X_test, y_train, y_test, accuracyDict)
 
-
 # tuning the logistic regression model with Gridsearchcv
 def log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning the Logistic Regression Model with GridSearchCV\n")
