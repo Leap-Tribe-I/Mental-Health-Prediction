@@ -1,11 +1,11 @@
 #suicide prediction program
-
+# import time
 '''
 suicide prediction program is working 
             but 
 will take time so dont quit in middle
 '''
-
+# start = time.time()
 # import all parts as module from src
 from src import DataCleaningEncoding
 from src.CorrelationMatrix import CorrMatrix
@@ -93,3 +93,6 @@ AccuracyPlot(accuracyDict)
 '''
 - Modelling
 '''
+
+# end = time.time()
+# print("Time taken: ", end - start)
