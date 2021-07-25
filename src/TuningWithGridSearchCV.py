@@ -1,6 +1,10 @@
+# ignore all warnings
+import warnings
+warnings.filterwarnings("ignore")
+
 # importing from src
 from src.ModelEvaluation import evalModel
-
+from numba import jit
 # sklearn module for tuning
 from sklearn.model_selection import GridSearchCV
 
@@ -14,6 +18,7 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import StackingClassifier
 
 # Run all model in one shot
+@jit
 def GridSearch(X_train, X_test, y_train, y_test, accuracyDict):
     log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict)
     tuneKNN(X_train, X_test, y_train, y_test, accuracyDict)
@@ -24,6 +29,7 @@ def GridSearch(X_train, X_test, y_train, y_test, accuracyDict):
     # tuneStacking(X_train, X_test, y_train, y_test, accuracyDict)
 
 # tuning the logistic regression model with Gridsearchcv
+@jit
 def log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning the Logistic Regression Model with GridSearchCV\n")
     param_grid = {'C':[0.1,1,10,100,1000],
@@ -41,6 +47,7 @@ def log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['Log_Reg_mod_tuning_GridSearchCV'] = accuracy * 100
 
 # tuning the KNN model with GridSearchCV
+@jit
 def tuneKNN(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning KNN model with GridSearchCV\n")
     param_grid = {'n_neighbors':[3,5,7,9,11,13,15],
@@ -58,6 +65,7 @@ def tuneKNN(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['KNN_tuning_GridSearchCV'] = accuracy * 100
 
 # tuning the Decision Tree model with GridSearchCV
+@jit
 def tuneDT(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning Decision Tree model with GridSearchCV\n")
     param_grid = {'criterion':['gini','entropy'],
@@ -75,6 +83,7 @@ def tuneDT(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['Decision_Tree_tuning_GridSearchCV'] = accuracy * 100
 
 # tuning the Random Forest model with GridSearchCV
+@jit
 def tuneRF(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning Random Forest model with GridSearchCV\n")
     param_grid = {'n_estimators':[10,20,30,40,50,60,70,80,90,100],
@@ -93,6 +102,7 @@ def tuneRF(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['Random_Forest_tuning_GridSearchCV'] = accuracy * 100
 
 # tuning boosting model with GridSearchCV
+@jit
 def tuneBoosting(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning Boosting model with GridSearchCV\n")
     param_grid = {'n_estimators':[10,20,30,40,50,60,70,80,90,100],
@@ -109,6 +119,7 @@ def tuneBoosting(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['AdaBoost_tuning_GridSearchCV'] = accuracy * 100
 
 # tuning bagging model with GridSearchCV
+@jit
 def tuneBagging(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning Bagging model with GridSearchCV\n")
     param_grid = {'n_estimators':[10,20,30,40,50,60,70,80,90,100],

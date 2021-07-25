@@ -1,6 +1,10 @@
+# ignore all warnings
+import warnings
+warnings.filterwarnings("ignore")
+
 # importing from src
 from src.ModelEvaluation import evalModel
-
+from numba import jit
 # sklearn module for tuning
 from sklearn.model_selection import RandomizedSearchCV
 
@@ -17,6 +21,7 @@ from sklearn.ensemble import StackingClassifier
 from scipy.stats import randint as sp_randint
 
 # Run all model in one shot
+@jit
 def RandomizedSearch(X_train, X_test, y_train, y_test, accuracyDict):
     log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict)
     tuneKNN(X_train, X_test, y_train, y_test, accuracyDict)
@@ -27,6 +32,7 @@ def RandomizedSearch(X_train, X_test, y_train, y_test, accuracyDict):
     # tuneStacking(X_train, X_test, y_train, y_test, accuracyDict)
 
 # tuning the logistic regression model with RandomizedSearchCV
+@jit
 def log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning the Logistic Regression Model with RandomizedSearchCV\n")
     param_distributions = {"C": sp_randint(1,100),
@@ -44,6 +50,7 @@ def log_reg_mod_tuning(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['Log_Reg_mod_tuning_RandomSearchCV'] = accuracy * 100
 
 # tuning the KNN model with RandomizedSearchCV
+@jit
 def tuneKNN(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning KNN model with RandomizedSearchCV\n")
     param_distributions = {"n_neighbors": sp_randint(1,100),
@@ -61,6 +68,7 @@ def tuneKNN(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['KNN_tuning_RandomSearchCV'] = accuracy * 100
 
 # tuning the Decision Tree model with RandomizedSearchCV
+@jit
 def tuneDT(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning Decision Tree model with RandomizedSearchCV\n")
     param_distributions = {"criterion": ["gini", "entropy"],
@@ -78,6 +86,7 @@ def tuneDT(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['Decision_Tree_tuning_RandomSearchCV'] = accuracy * 100
 
 # tuning the Random Forest model with RandomizedSearchCV
+@jit
 def tuneRF(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning Random Forest model with RandomizedSearchCV\n")
     param_distributions = {"n_estimators": sp_randint(10,100),
@@ -96,6 +105,7 @@ def tuneRF(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['Random_Forest_tuning_RandomSearchCV'] = accuracy * 100
 
 # tuning boosting model with RandomizedSearchCV
+@jit
 def tuneBoosting(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning Boosting model with RandomizedSearchCV\n")
     param_distributions = {"n_estimators": sp_randint(10,100),
@@ -112,6 +122,7 @@ def tuneBoosting(X_train, X_test, y_train, y_test, accuracyDict):
     accuracyDict['AdaBoost_tuning_RandomSearchCV'] = accuracy * 100
 
 # tuning bagging model with RandomizedSearchCV
+@jit
 def tuneBagging(X_train, X_test, y_train, y_test, accuracyDict):
     print("\nTuning Bagging model with RandomizedSearchCV\n")
     param_distributions = {"n_estimators": sp_randint(10,100),
