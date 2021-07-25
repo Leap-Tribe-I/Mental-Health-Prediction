@@ -1,11 +1,11 @@
 #suicide prediction program
-# import time
+import time
 '''
 suicide prediction program is working 
             but 
 will take time so dont quit in middle
 '''
-# start = time.time()
+
 # import all parts as module from src
 from src import DataCleaningEncoding
 from src.CorrelationMatrix import CorrMatrix
@@ -53,7 +53,7 @@ if check is True:
 else:
     print("Dataset doesnot contain: ", variable)
     exit()
-
+start = time.time()
 '''
 - Data Cleaning nd Encoding
 - Corrlation Matrix
@@ -83,16 +83,16 @@ rscv.RandomizedSearch(X_train, X_test, y_train, y_test, accuracyDict)
 
 print("accuracyDict:\n")
 print(json.dumps(accuracyDict, indent=1))
-
+end = time.time()
 '''
 - Accuracy Bar Graph
 '''
 
-AccuracyPlot(accuracyDict)
+# AccuracyPlot(accuracyDict)
 
 '''
 - Modelling
 '''
 
-# end = time.time()
-# print("Time taken: ", end - start)
+end = time.time()
+print("Time taken: ", end - start,"seconds")
