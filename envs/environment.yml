@@ -1,11 +1,10 @@
-name: SuicdePrediction
+name: SuicidePrediction
 channels:
   - defaults
 dependencies:
   - _libgcc_mutex=0.1=main
   - ca-certificates=2021.7.5=h06a4308_1
   - certifi=2021.5.30=py39h06a4308_0
-  - cudatoolkit=8.0=3
   - ld_impl_linux-64=2.35.1=h7274673_9
   - libffi=3.3=he6710b0_2
   - libgcc-ng=9.1.0=hdf63c60_0
@@ -26,10 +25,9 @@ dependencies:
     - cycler==0.10.0
     - joblib==1.0.1
     - kiwisolver==1.3.1
-    - llvmlite==0.36.0
     - matplotlib==3.4.2
     - numpy==1.21.1
-    - pandas==1.3.0
+    - pandas==1.3.1
     - pillow==8.3.1
     - pyparsing==2.4.7
     - python-dateutil==2.8.2
@@ -40,5 +38,5 @@ dependencies:
     - six==1.16.0
     - sklearn==0.0
     - threadpoolctl==2.2.0
-prefix: /home/jaineel/anaconda3/envs/SuicdePrediction
+prefix: /home/jaineel/anaconda3/envs/SuicidePrediction
 
