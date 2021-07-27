@@ -1,4 +1,4 @@
-- Data Cleaning nd Encoding
+- Data loading,checking,cleaning nd encoding
 - Correlation matrix
 - Data Splitting
 - Data feature importance
@@ -11,8 +11,8 @@
 
 ======================================================
 
-DataCleaningEncoding 
-	-> this contains data cleaning n encoding
+DataProcessing (in option there is direct loading of data from mongo in app.py)
+	-> this contains data loading, checking, cleaning n encoding
 CorrelationMatrix
 	-> this contains correlation Matrix
 DataSplitting
@@ -29,3 +29,23 @@ AccuracyBarGraph
 	-> this contains Accuracy Dict Graph plotting
 Modelling
 	-> this contains data modelling
+
+=========================================================
+accuracyDict:
+{
+ "Log_Reg_mod_tuning_GridSearchCV": 85.71428571428571,
+ "KNN_tuning_GridSearchCV": 90.47619047619048,
+ "Decision_Tree_tuning_GridSearchCV": 80.95238095238095,
+ "Random_Forest_tuning_GridSearchCV": 85.71428571428571,
+ "AdaBoost_tuning_GridSearchCV": 80.95238095238095,
+ "Bagging_tuning_GridSearchCV": 90.47619047619048,
+ "Log_Reg_mod_tuning_RandomSearchCV": 85.71428571428571,
+ "KNN_tuning_RandomSearchCV": 90.47619047619048,
+ "Decision_Tree_tuning_RandomSearchCV": 76.19047619047619,
+ "Random_Forest_tuning_RandomSearchCV": 90.47619047619048,
+ "AdaBoost_tuning_RandomSearchCV": 80.95238095238095,
+ "Bagging_tuning_RandomSearchCV": 80.95238095238095
+}
+Time taken:  347.14750599861145 seconds
+
+==========================================================
