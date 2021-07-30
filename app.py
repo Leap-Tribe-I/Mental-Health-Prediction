@@ -5,7 +5,7 @@ suicide prediction program is working
             but 
 will take time so dont quit in middle
 '''
-import pymongo
+
 # import all parts as module from src
 from src import DataProcessing
 from src.CorrelationMatrix import CorrMatrix
@@ -22,12 +22,9 @@ import numpy as np
 import seaborn as sns
 import json
 start = time.time()
-# import dataset from mongodb n processing
-client = pymongo.MongoClient("mongodb+srv://mental:geek@cluster0.lohic.mongodb.net/suicide?retryWrites=true&w=majority")
-db = client.suicide.dataset
-data = pd.DataFrame(db.find({},{'_id':0,'timestamp':0}))
-print("Data Loaded through db")
-data = DataProcessing.encode(data)  # change encode to process to do all loading, checking ,cleaning n encoding
+
+# data loading, checking, cleaning and encoding
+data = DataProcessing.process()
 
 '''
 - Data Cleaning nd Encoding
