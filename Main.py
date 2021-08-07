@@ -13,7 +13,8 @@ from src.DataSplitting import DataSplit
 from src.FeatureImportance import featuring_importance
 import src.TuningWithGridSearchCV as gscv
 import src.TuningWithRandomizedSearchCV as rscv
-from src.AccuracyBarGraph import AccuracyPlot
+# from src.AccuracyBarGraph import AccuracyPlot
+
 
 # import modules
 import matplotlib.pyplot as plt

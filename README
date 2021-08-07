@@ -81,7 +81,7 @@ steps:
 
 ======================================================
 
-DataProcessing (in option there is direct loading of data from mongo in app.py)
+DataProcessing
 	-> this contains data loading, checking, cleaning n encoding
 CorrelationMatrix
 	-> this contains correlation Matrix
@@ -99,6 +99,10 @@ AccuracyBarGraph
 	-> this contains Accuracy Dict Graph plotting
 Modelling
 	-> this contains data modelling
+DnnClassifier
+	->
+output
+	->
 
 =========================================================
 accuracyDict:
