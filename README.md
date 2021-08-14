@@ -1,5 +1,7 @@
 # Suicide-Prediction
+<hr> 
 Leap 4.0 Major Project
+<hr>
 
 <h2>MentalGeeks Presents</h2>
 <h3>Suicide Prediction Program</h3>
@@ -32,8 +34,8 @@ Leap 4.0 Major Project
 # Explaination:
 - steps ke liye aalag readme banenge
 - this is backend detailed file (isme se jitna lage utna use karna , not need to use whole)
-
-===========================================================
+-
+<hr>
 
 ## To implement conda environment: (for unix)
 to use conda environment (conda package is needed)(to install conda : apt-get install conda)
@@ -43,11 +45,11 @@ to use conda environment (conda package is needed)(to install conda : apt-get in
         
     <p>step 2: activate conda environment</p>
         conda activate SuicidePrediction
-
-===========================================================
+<hr>
 
 # To implement virtual environment:
 to use virtual envirnoment (venv is needed)(to install venv : pip install virtualenv)
+
 ## use command: (for unix)
    <p>step 1: create envirnoment</p>
         python -m venv suicide_env
@@ -67,7 +69,7 @@ to use virtual envirnoment (venv is needed)(to install venv : pip install virtua
         
     <p>step 3: install dependenies</p>
         pip install -r venvrequire.txt
-
+<hr>
 
 
 
