@@ -52,7 +52,7 @@ To run and install this project there are some pre-requisites. It can be run usi
 
 to use conda environment conda package is needed
 -to install: 
-<code>conda : apt-get install conda</code>
+  apt-get install conda
 # use command :
 *step 1: create conda environment
         <code>conda env create -f environment.yml</code>
