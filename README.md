@@ -51,38 +51,40 @@ To run and install this project there are some pre-requisites. It can be run usi
 ## To implement conda environment: (for unix)
 
 to use conda environment conda package is needed
--to install: 
-  >apt-get install conda
-# use command :
-*step 1: create conda environment
-        <code>conda env create -f environment.yml</code>
+- to install: 
+  ```apt-get install conda```
+
+- step 1: create conda environment
+        ```conda env create -f environment.yml```
         
-*step 2: activate conda environment
-        conda activate SuicidePrediction
+- step 2: activate conda environment
+        ```conda activate SuicidePrediction```
 <hr>
 
-# To implement virtual environment:
-to use virtual envirnoment (venv is needed)(to install venv : pip install virtualenv)
+## To implement virtual environment:
+to use virtual envirnoment venv package is needed
+- to install venv : 
+```pip install virtualenv```
 
-## use command: (for unix)
-*step 1: create envirnoment
-        python -m venv suicide_env
+### use command: (for unix)
+- step 1: create envirnoment
+        ```python -m venv suicide_env```
         
-*step 2: activate virtualenv
-        source suicide_env/bin/activate
+- step 2: activate virtualenv
+        ```source suicide_env/bin/activate```
         
-*step 3: install dependenies
-        pip install -r venvrequire.txt
+- step 3: install dependenies
+        ```pip install -r venvrequire.txt```
 
-## use command: (for windows)
-*step 1: create envirnoment
-        python -m venv suicide_env
+### use command: (for windows)
+- step 1: create envirnoment
+        ```python -m venv suicide_env```
         
-*step 2: activate virtualenv
-        suicide_env\Scripts\activate.bat
+- step 2: activate virtualenv
+        ```suicide_env\Scripts\activate.bat```
         
-*step 3: install dependenies
-        pip install -r venvrequire.txt
+- step 3: install dependenies
+        ```pip install -r venvrequire.txt```
 <hr>
 
 
@@ -92,4 +94,12 @@ to use virtual envirnoment (venv is needed)(to install venv : pip install virtua
 
 |Name|email|github|
 --- | --- | ---
-|parth|parth@gamil.com|parthgit|
+|Hardeep Singh|<umaprasaddas1999@gmail.com> |parthgit|
+|Abhinav Tripathi|<ts710665@gmail.com>|parthgit|
+|Jaineel Petiwale||parthgit|
+|Parth Sharma|parth@gamil.com|parthgit|
+|Uma Prasad Das|parth@gamil.com|parthgit|
+|R Nagasai|parth@gamil.com|parthgit|
+|Ashutosh Naik|parth@gamil.com|parthgit|
+|Tanya Singh Raghuvanshi|parth@gamil.com|parthgit|
+|Shaunak Biswas|parth@gamil.com|parthgit|
