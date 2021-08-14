@@ -31,17 +31,31 @@ Leap 4.0 Major Project
   </ol>
 </details>
 
-# Explaination:
-- steps ke liye aalag readme banenge
-- this is backend detailed file (isme se jitna lage utna use karna , not need to use whole)
--
+# About the Project:
+<p>As more and more people realise the benefit of mental help, there is still a lack of accessibility for the same. We wanted to use the modern technologies and provide a simple yet useful solution to tackle this problem. So, we are using novel machine learning algorithms to analyse and predict people who might need help from a mental health professional. </p>
+
+# Built with:
+<p>There were different technologies involved in the making of this project:</p>
+<ul>
+ <li>Python</li>
+ <li>Flask</li>
+ <li>Html/CSS</li>
+ <li>scikit-learn</li>
+ <li>tensorflow</li>
+</ul>
 <hr>
 
+# Getting Started:
+To run and install this project there are some pre-requisites. It can be run using Anaconda environment or Virtualenv:
+
 ## To implement conda environment: (for unix)
-to use conda environment (conda package is needed)(to install conda : apt-get install conda)
+
+to use conda environment conda package is needed
+-to install: 
+<code>conda : apt-get install conda</code>
 # use command :
 *step 1: create conda environment
-        conda env create -f environment.yml
+        <code>conda env create -f environment.yml</code>
         
 *step 2: activate conda environment
         conda activate SuicidePrediction
