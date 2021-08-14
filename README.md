@@ -86,7 +86,6 @@ to use virtual envirnoment venv package is needed
 
 
 
-
 # Contributors
 |Name|email|github|
 --- | --- | ---
