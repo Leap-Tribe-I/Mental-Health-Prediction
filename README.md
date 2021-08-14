@@ -154,5 +154,5 @@ App.py  -> it contains api code
 
 
 |Name|email|github|
-|---+---+---|
+--- | --- | ---
 |parth|parth@gamil.com|parthgit|
