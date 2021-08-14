@@ -38,29 +38,29 @@ Leap 4.0 Major Project
 ## To implement conda environment: (for unix)
 to use conda environment (conda package is needed)(to install conda : apt-get install conda)
 # use command :
-    step 1: create conda environment
+    <p>step 1: create conda environment</p>
         conda env create -f environment.yml
-    step 2: activate conda environment
+    <p>step 2: activate conda environment</p>
         conda activate SuicidePrediction
 
 ===========================================================
 
-## To implement virtual environment:
+# To implement virtual environment:
 to use virtual envirnoment (venv is needed)(to install venv : pip install virtualenv)
-# use command: (for unix)
-    step 1: create envirnoment
+## use command: (for unix)
+   <p>step 1: create envirnoment</p>
         python -m venv suicide_env
-    step 2: activate virtualenv
+   <p>step 2: activate virtualenv</p>
         source suicide_env/bin/activate
-    step 3: install dependenies
+   <p>step 3: install dependenies</p>
         pip install -r venvrequire.txt
 
-# use command: (for windows)
-    step 1: create envirnoment
+## use command: (for windows)
+    <p>step 1: create envirnoment</p>
         python -m venv suicide_env
-    step 2: activate virtualenv
+    <p>step 2: activate virtualenv</p>
         suicide_env\Scripts\activate.bat
-    step 3: install dependenies
+    <p>step 3: install dependenies</p>
         pip install -r venvrequire.txt
 
 
