@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Welcome Page</title>
+	<link rel="icon" href="{{url_for('static', filename='css/mental health.jpg')}}" type="image/x-icon">
+	<link href="{{url_for('static', filename='css/index.css')}}" rel="stylesheet">
+</head>
+<body>
+	<div class="banner">
+		<div class="navbar">
+			<!-- <img src="logo.jpg" class="logo"> -->
+			<h3 style="color: white; cursor: pointer;">MENTAL HEALTH</h3>
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="about.html">ABOUT US</a></li>
+				<li><a href="upload.html">UPLOAD FILE</a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<h1>WELCOME TO <p style="color: teal; display: inline-block;">MENTAL HEALTH PREDICTOR</p></h1>
+			<p class="s">Go to the input entering page and upload the data to be tested,<br>then you will get the output.</p>
+			<div>
+				<button type="button"><span></span><a href="/input" style="color: white; font: none;">Go to HOME Page</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

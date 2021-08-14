@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="mental health.jpg" type="image/x-icon">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/upload.css')}}">
+    <title>Upload</title>
+    <script>
+        const realFileBtn = document.getElementById("real-file");
+        const customBtn = document.getElementById("custom-button");
+        const customTxt = document.getElementById("custom-text");
+  
+        customBtn.addEventListener("click", function() {
+          realFileBtn.click();
+        });
+  
+        realFileBtn.addEventListener("change", function() {
+          if (realFileBtn.value) {
+            customTxt.innerHTML = realFileBtn.value.match(
+              /[\/\\]([\w\d\s\.\-\(\)]+)$/
+            )[1];
+          } else {
+            customTxt.innerHTML = "No file chosen, yet.";
+          }
+        });
+  
+        function UploadValidation() {  
+          var allowedFiles = [".csv", ".xlsx", ".json"];
+          var fileUpload = document.getElementById("fileUpload");
+          var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles.join('|') + ")$");
+  
+          if (fileUpload.value.length > 0) {
+              if (!regex.test(fileUpload.value)) {
+                  window.alert("File type not allowed. Please upload a .csv, .xlsx or .json file.");
+                  return false;
+              }
+              // window.open("/load");
+              return true;
+          }
+          window.alert("Please select a file to upload.");
+          return false;
+        }
+      </script>
+</head>
+<body>
+    <div class="banner">
+		<div class="navbar">
+			<!-- <img src="logo.jpg" class="logo"> -->
+			<h3 style="color: white; cursor: pointer;">MENTAL HEALTH</h3>
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="about.html">ABOUT US</a></li>
+				<li><a href="upload.html">UPLOAD FILE</a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<h1>UPLOAD <p style="color: teal; display: inline-block;">YOU CSV FILE</p></h1>
+			<!-- <p class="s">Go to the input entering page and upload the data to be tested,<br>then you will get the output.</p> -->
+			<form action="/upload" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <span></span>
+                    <input type="file" name="file" id="fileUpload" color = "teal" class="form-control-file" accept=".csv,.xlsx,.json"><span></span>
+                    <button type="submit" class="btn btn-primary" name="submit" onclick="return UploadValidation()"><span></span>Upload</button>
+                </div>
+                </form>
+            <!-- <div>
+                <button type="button">
+                <span></span>
+                <a href="index.html" style="color: white; font: none;">
+                <form action="upload" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="file" color = "teal" class="form-control-file" name="file" id="file">
+                        <button type="submit" class="btn btn-primary"><span></span>Upload</button>
+                       
+                        this is comment -> <button name="download" href="download.html"><span></span>Download Page</button> 
+                    </div>
+                </form>
+                </button>
+			</div> -->
+		</div>
+	</div> 
+</body>
+</html>

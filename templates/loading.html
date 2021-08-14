@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='css/mental health.jpg')}}" type="image/x-icon">
+    <style>
+        body {
+            position: relative;
+        }
+        h2 {
+            position: absolute;
+            padding-top: 3%;
+            margin-left: 10px;
+            font-family: sans-serif;
+            left: 38%;
+        }
+        img {
+            padding-top: 5%;
+            height: 85vh;
+        }
+    </style>
+    <script>
+        
+    </script>
+</head>
+    <body>
+        <center>
+        <h2>Please wait...</h2>
+        <img src="{{url_for('static', filename='css/loading.gif')}}" alt="Loading">
+        </center>
+    </body>
+</html>
