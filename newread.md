@@ -51,36 +51,36 @@ to use conda environment conda package is needed
 >  apt-get install conda
 
 - step 1: create conda environment
-       > ```conda env create -f environment.yml```
+>  conda env create -f environment.yml
         
 - step 2: activate conda environment
-       > ```conda activate SuicidePrediction```
+>  conda activate SuicidePrediction
 <hr>
 
 ## To implement virtual environment:
 to use virtual envirnoment venv package is needed
 - to install venv : 
->```pip install virtualenv```
+>  pip install virtualenv
 
 ### use command: (for unix)
 - step 1: create envirnoment
-       > ```python -m venv suicide_env```
+>  python -m venv suicide_env
         
 - step 2: activate virtualenv
-       > ```source suicide_env/bin/activate```
+>  source suicide_env/bin/activate
         
 - step 3: install dependenies
-      >  ```pip install -r venvrequire.txt```
+>  pip install -r venvrequire.txt
 
 ### use command: (for windows)
 - step 1: create envirnoment
-      >  ```python -m venv suicide_env```
+>  python -m venv suicide_env
         
 - step 2: activate virtualenv
-      >  ```suicide_env\Scripts\activate.bat```
+>  suicide_env\Scripts\activate.bat
         
 - step 3: install dependenies
-      >  ```pip install -r venvrequire.txt```
+>  pip install -r venvrequire.txt
 <hr>
 
 
