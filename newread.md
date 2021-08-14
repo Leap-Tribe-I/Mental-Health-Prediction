@@ -18,7 +18,7 @@ Leap 4.0 Major Project
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#To-implement-conda-environment:-(for-unix)">Conda Environment</a></li>
+        <li><a href="#To-implement-conda-environment">Conda Environment</a></li>
         <li><a href="#To-implement-virtual-environment">Virtual Environment</a></li>
       </ul>
     </li>
@@ -43,8 +43,9 @@ Leap 4.0 Major Project
 # Getting Started:
 To run and install this project there are some pre-requisites. It can be run using Anaconda environment or Virtualenv:
 
-## To implement conda environment: (for unix)
+## To implement conda environment: 
 
+### (for unix)
 to use conda environment conda package is needed
 - to install: 
 >  ```apt-get install conda```
