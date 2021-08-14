@@ -40,6 +40,7 @@ to use conda environment (conda package is needed)(to install conda : apt-get in
 # use command :
     <p>step 1: create conda environment</p>
         conda env create -f environment.yml
+        
     <p>step 2: activate conda environment</p>
         conda activate SuicidePrediction
 
@@ -50,16 +51,20 @@ to use virtual envirnoment (venv is needed)(to install venv : pip install virtua
 ## use command: (for unix)
    <p>step 1: create envirnoment</p>
         python -m venv suicide_env
+        
    <p>step 2: activate virtualenv</p>
         source suicide_env/bin/activate
+        
    <p>step 3: install dependenies</p>
         pip install -r venvrequire.txt
 
 ## use command: (for windows)
     <p>step 1: create envirnoment</p>
         python -m venv suicide_env
+        
     <p>step 2: activate virtualenv</p>
         suicide_env\Scripts\activate.bat
+        
     <p>step 3: install dependenies</p>
         pip install -r venvrequire.txt
 
