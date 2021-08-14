@@ -18,7 +18,7 @@ Leap 4.0 Major Project
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#To-implement-conda-environment">Conda Environment</a></li>
+        <li><a href="#To-implement-conda-environment:-(for-unix)">Conda Environment</a></li>
         <li><a href="#To-implement-virtual-environment">Virtual Environment</a></li>
       </ul>
     </li>
