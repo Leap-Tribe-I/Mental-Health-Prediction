@@ -18,16 +18,11 @@ Leap 4.0 Major Project
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#To-implement-conda-environment">Conda Environment</a></li>
+        <li><a href="#To-implement-virtual-environment">Virtual Environment</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#Contributors">Contributors</a></li>
   </ol>
 </details>
 
@@ -68,30 +63,30 @@ to use virtual envirnoment venv package is needed
 
 ### use command: (for unix)
 - step 1: create envirnoment
-        > ```python -m venv suicide_env```
+       > ```python -m venv suicide_env```
         
 - step 2: activate virtualenv
-        > ```source suicide_env/bin/activate```
+       > ```source suicide_env/bin/activate```
         
 - step 3: install dependenies
-        > ```pip install -r venvrequire.txt```
+      >  ```pip install -r venvrequire.txt```
 
 ### use command: (for windows)
 - step 1: create envirnoment
-        > ```python -m venv suicide_env```
+      >  ```python -m venv suicide_env```
         
 - step 2: activate virtualenv
-        > ```suicide_env\Scripts\activate.bat```
+      >  ```suicide_env\Scripts\activate.bat```
         
 - step 3: install dependenies
-        > ```pip install -r venvrequire.txt```
+      >  ```pip install -r venvrequire.txt```
 <hr>
 
 
 
 
 
-
+# Contributors
 |Name|email|github|
 --- | --- | ---
 |Hardeep Singh|<iharry6857@gmail.com>|[HardeepSingh6857](https://github.com/HardeepSingh6857)|
