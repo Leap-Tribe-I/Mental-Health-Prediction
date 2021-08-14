@@ -91,7 +91,7 @@ to use virtual envirnoment venv package is needed
 |Name|email|github|
 --- | --- | ---
 |Hardeep Singh|<iharry6857@gmail.com>|[HardeepSingh6857](https://github.com/HardeepSingh6857)|
-|Abhinav Tripathi|||
+|Abhinav Tripathi|<post2abhinav21@gmail.com>|[Abhinav2109](https://github.com/Abhinav2109)|
 |Jaineel Petiwale|<Jaineel2001@gmail.com>|[JPetiwale](https://github.com/JPetiwale)|
 |Parth Sharma|<parth.sharma9912@gamil.com>|[ParthS-1](https://github.com/ParthS-1)|
 |Uma Prasad Das|<umaprasaddas1999@gmail.com>|[CodeWithUma](https://github.com/CodeWithUma)|
