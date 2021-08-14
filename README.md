@@ -18,16 +18,11 @@ Leap 4.0 Major Project
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#To-implement-conda-environment">Conda Environment</a></li>
+        <li><a href="#To-implement-virtual-environment">Virtual Environment</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#Contributors">Contributors</a></li>
   </ol>
 </details>
 
@@ -48,58 +43,59 @@ Leap 4.0 Major Project
 # Getting Started:
 To run and install this project there are some pre-requisites. It can be run using Anaconda environment or Virtualenv:
 
-## To implement conda environment: (for unix)
+## To implement conda environment: 
 
+### (for unix)
 to use conda environment conda package is needed
 - to install: 
-  ```apt-get install conda```
+>  apt-get install conda
 
 - step 1: create conda environment
-        ```conda env create -f environment.yml```
+>  conda env create -f environment.yml
         
 - step 2: activate conda environment
-        ```conda activate SuicidePrediction```
+>  conda activate SuicidePrediction
 <hr>
 
 ## To implement virtual environment:
 to use virtual envirnoment venv package is needed
 - to install venv : 
-```pip install virtualenv```
+>  pip install virtualenv
 
 ### use command: (for unix)
 - step 1: create envirnoment
-        ```python -m venv suicide_env```
+>  python -m venv suicide_env
         
 - step 2: activate virtualenv
-        ```source suicide_env/bin/activate```
+>  source suicide_env/bin/activate
         
 - step 3: install dependenies
-        ```pip install -r venvrequire.txt```
+>  pip install -r venvrequire.txt
 
 ### use command: (for windows)
 - step 1: create envirnoment
-        ```python -m venv suicide_env```
+>  python -m venv suicide_env
         
 - step 2: activate virtualenv
-        ```suicide_env\Scripts\activate.bat```
+>  suicide_env\Scripts\activate.bat
         
 - step 3: install dependenies
-        ```pip install -r venvrequire.txt```
+>  pip install -r venvrequire.txt
 <hr>
 
 
 
 
 
-
+# Contributors
 |Name|email|github|
 --- | --- | ---
-|Hardeep Singh|<umaprasaddas1999@gmail.com> |parthgit|
-|Abhinav Tripathi|<ts710665@gmail.com>|parthgit|
-|Jaineel Petiwale||parthgit|
-|Parth Sharma|parth@gamil.com|parthgit|
-|Uma Prasad Das|parth@gamil.com|parthgit|
-|R Nagasai|parth@gamil.com|parthgit|
-|Ashutosh Naik|parth@gamil.com|parthgit|
-|Tanya Singh Raghuvanshi|parth@gamil.com|parthgit|
-|Shaunak Biswas|parth@gamil.com|parthgit|
+|Hardeep Singh|<iharry6857@gmail.com>|[HardeepSingh6857](https://github.com/HardeepSingh6857)|
+|Abhinav Tripathi|||
+|Jaineel Petiwale|<Jaineel2001@gmail.com>|[JPetiwale](https://github.com/JPetiwale)|
+|Parth Sharma|<parth.sharma9912@gamil.com>|[ParthS-1](https://github.com/ParthS-1)|
+|Uma Prasad Das|<umaprasaddas1999@gmail.com>|[CodeWithUma](https://github.com/CodeWithUma)|
+|R Nagasai|<rnagasai.18.cse@anits.edu.in>|[rnagasai](https://github.com/rnagasai)|
+|Ashutosh Naik|<aashunaik987@gmail.com>|[aashunaik987](https://github.com/aashunaik987)|
+|Tanya Singh Raghuvanshi|<ts710665@gmail.com>|[TanyaSinghR](https://github.com/TanyaSinghR)|
+|Shaunak Biswas|<shaunak.biswas06@gmail.com>|[Shaunak1102](https://github.com/Shaunak1102)|
