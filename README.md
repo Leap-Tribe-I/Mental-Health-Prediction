@@ -3,7 +3,31 @@ Leap 4.0 Major Project
 
 <h2>MentalGeeks Presents</h2>
 <h3>Suicide Prediction Program</h3>
-
+ <!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
 
 # Explaination:
 - steps ke liye aalag readme banenge
@@ -39,117 +63,9 @@ to use virtual envirnoment (venv is needed)(to install venv : pip install virtua
     step 3: install dependenies
         pip install -r venvrequire.txt
 
-===========================================================
-## Week-Wise Update:
 
-# Week 0 - Done
-System Setup , created Solution Document 
-And Go through Requirement (Both Resource And Knowledge)
 
-# Week 1 - Done
-Get data gathered, cleaned and encoded
 
-# Week 2 
-Defining relationships between data points 
-(using covariance Matrix, variability comparison).
-
-# Week 3 
-Evaluation of models (Logistic Regression, Kneighbors Classifier)
-
-# Week 4 
-Implementation of remaining models 
-(Decision Tree Classifier, Random forests, Bagging, Boosting, etc.) 
-
-# Week 5 
-Predicting with neural Network and testing 
-
-# Week 6 
-Presenting the Minimal Viable Product
-
-==================================================================
-## Backend Steps:
-
-1. Data Loading
-2. Getting the information abou the Data(like number of rows and columns)
-
-	Data Cleaning
-
-3. clear NaN
-4. Again see data info
-	N Also check no data is lost
-5. remove all un=necessary Data (like timestamp,comments)
-
-	Data Sorting
-
-6. Encode Data in form of index numbers.
-
-7. Get Data average n percentages n etc
-	
-	Total Number of: 
-	Average Numbers of: Males, Females, income
-	sort: living condition
-
-8. Plot correaltion matrix.
-
-9. Data Training.
-
-10.Tuning evaluation of matrix.
-
-11. Creating Final Model.
-
-12. Neural Networking with Tensorflow.
-
-========================================================================
-
-- Data loading,checking,cleaning nd encoding
-- Correlation matrix
-- Data Splitting
-- Data feature importance
-- Model Evaluation
-- Tuning
-	With GridsearchCV
-	With RandomizedSearchCV
-- DnnClassifier
-- output
-
-======================================================
-## API description:
-
-* / 				-> home page
-* /download		-> runs backend
-* /upload			-> receive from upload and send to /download
-* /download_file	-> gives output in zip
-
-======================================================
-## Backend file description:
-
-# DataProcessing
-	-> this contains data loading, checking, cleaning n encoding
-# CorrelationMatrix
-	-> this contains correlation Matrix
-# DataSplitting
-	-> this contains data spliting
-# FeatureImportance 
-	-> this contains data feautre importance
-# ModelEvaluation
-	-> this contains evaulation of model
-# TuningWithGridSearchCV
-	-> this contains all GridSearchCV tuning
-# TuningwithRandomSearchCV
-	-> this contains all RandomizedSearchCV tuning
-# AccuracyBarGraph
-	-> this contains Accuracy Dict Graph plotting
-# Modelling
-	-> this contains data modelling
-# DnnClassifier
-	-> this contains neural network part
-# Output
-	-> this contains code to output final data
-
-==========================================================
-
-Main.py -> runs only backend
-App.py  -> it contains api code
 
 
 
