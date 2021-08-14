@@ -150,3 +150,9 @@ Presenting the Minimal Viable Product
 
 Main.py -> runs only backend
 App.py  -> it contains api code
+
+
+
+|Name|email|github|
+|---+---+---|
+|parth|parth@gamil.com|parthgit|
