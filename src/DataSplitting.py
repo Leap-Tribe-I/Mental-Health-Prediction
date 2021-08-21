@@ -2,7 +2,7 @@
 from sklearn.model_selection import train_test_split
 
 def DataSplit(data):
-#Splitting the data
+    #Splitting the data
     independent_vars = ['family_size', 'annual_income', 'eating_habits', 
                         'addiction_friend', 'addiction', 'medical_history', 
                         'depressed', 'anxiety', 'happy_currently']

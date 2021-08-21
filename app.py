@@ -9,7 +9,7 @@ app = Flask(__name__)
 def hello_world():
     return render_template('index.html') 
 
-upload_dir = os.getcwd() + "/upload_dir"
+upload_dir = os.getcwd() + "/upload"
 
 @app.route("/upload", methods=['GET', 'POST'])
 def upload_page():
@@ -37,14 +37,27 @@ def download():
 def loading_page():
     return render_template('loading.html')
 
-@app.route("/download_files", methods=['GET', 'POST'])
-def download_files():
-    zipfolder = zipfile.ZipFile('output.zip', 'w', compression=zipfile.ZIP_STORED)
-    for root,dirs, files in os.walk('output'):
+@app.route("/about")
+def about_page():
+    return render_template('about.html')
+
+@app.route("/download_result", methods=['GET', 'POST'])
+def download_result():
+    zipfolder = zipfile.ZipFile('output_result.zip', 'w', compression=zipfile.ZIP_STORED)
+    for root,dirs, files in os.walk('output_result'):
         for file in files:
-            zipfolder.write("output/"+file)
+            zipfolder.write("output_result/"+file)
         zipfolder.close()
-    return send_file('output.zip', as_attachment=True)
+    return send_file('output_result.zip', as_attachment=True)
+
+@app.route("/download_graph", methods=['GET', 'POST'])
+def download_graph():
+    zipfolder = zipfile.ZipFile('output_graph.zip', 'w', compression=zipfile.ZIP_STORED)
+    for root,dirs, files in os.walk('output_graph'):
+        for file in files:
+            zipfolder.write("output_graph/"+file)
+        zipfolder.close()
+    return send_file('output_graph.zip', as_attachment=True)
 
 if __name__ == "__main__":
     app.run(debug=True)

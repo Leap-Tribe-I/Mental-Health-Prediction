@@ -8,12 +8,13 @@ will take time so dont quit in middle
 
 # import all parts as module from src
 from src import DataProcessing
+from src.AccuracyBarGraph import AccuracyPlot
 from src.CorrelationMatrix import CorrMatrix
 from src.DataSplitting import DataSplit
 from src.FeatureImportance import featuring_importance
 import src.TuningWithGridSearchCV as gscv
 import src.TuningWithRandomizedSearchCV as rscv
-import src.DnnClassifier as dnn
+from src.DnnClassifier import tensorflow_dnn as dnn
 # from src.AccuracyBarGraph import AccuracyPlot
 
 
@@ -65,7 +66,7 @@ def suicide():
     rscv.RandomizedSearch(X_train, X_test, y_train, y_test, accuracyDict, timelog)
 
     #DNN implimentation 
-    dnn.tensorflow_dnn(data, X_train, X_test, y_train, y_test, accuracyDict, timelog)
+    dnn(data, X_train, X_test, y_train, y_test, accuracyDict, timelog)
 
     print("accuracyDict:\n")
     print(json.dumps(accuracyDict, indent=1))
@@ -73,9 +74,7 @@ def suicide():
     '''
     - Accuracy Bar Graph
     '''
-
-    # AccuracyPlot(accuracyDict)
-
+    AccuracyPlot(accuracyDict)
     '''
     - Modelling
     '''

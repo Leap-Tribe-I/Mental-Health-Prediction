@@ -1,9 +1,7 @@
 import time
-import numpy as np
 import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
 from src.output import get_csv_output
+
 def tensorflow_dnn(data, X_train ,X_test, y_train, y_test, accuracyDict, timelog):
     start = time.time()
     labels = data.pop('suicidal_thoughts')
@@ -19,7 +17,11 @@ def tensorflow_dnn(data, X_train ,X_test, y_train, y_test, accuracyDict, timelog
     depressed = tf.feature_column.numeric_column("depressed")
     anxiety = tf.feature_column.numeric_column("anxiety")
     happy_currently = tf.feature_column.numeric_column("happy_currently")
-    feature_columns = [family_size, annual_income, eating_habits, addiction_friend, addiction, medical_history, depressed, anxiety, happy_currently]
+    feature_columns = [family_size, annual_income, 
+                        eating_habits, addiction_friend, 
+                        addiction, medical_history, depressed, 
+                        anxiety, happy_currently]
+
     def train_input(features, labels, batch_size):
         """An input function for training"""
         # Convert the inputs to a Dataset.
@@ -47,8 +49,10 @@ def tensorflow_dnn(data, X_train ,X_test, y_train, y_test, accuracyDict, timelog
         # Return the dataset.
         return dataset
 
-
-    model = tf.estimator.DNNClassifier(feature_columns=feature_columns,  hidden_units=[50, 40, 10], optimizer= tf.keras.optimizers.Adagrad(), batch_norm=True)
+    model = tf.estimator.DNNClassifier(feature_columns=feature_columns,  
+                                        hidden_units=[50, 40, 10], 
+                                        optimizer= tf.keras.optimizers.Adagrad(), 
+                                        batch_norm=True)
     model.train(input_fn=lambda:train_input(X_train, y_train, 100), steps = 1000)
     result = model.evaluate(input_fn=lambda:eval_input(X_test, y_test, 100))
     accuracy = result['accuracy'] *100

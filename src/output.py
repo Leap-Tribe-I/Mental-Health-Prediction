@@ -11,7 +11,7 @@ def get_csv_output(model, X_test, y_pred_class):
     measure = pd.DataFrame(measure)
     output_data = measure.join(y_pred)
     csv = pd.DataFrame(output_data)
-    path = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/output/"
+    path = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/output_result/"
     file_name = path + name[0] +'.csv'
     csv.to_csv(file_name, header=True)
 
@@ -37,4 +37,5 @@ def visual_final_plot(log, kn, dis, rand, boosting, bagging):
     plt.legend()
     plt.xlabel("Prediction Model")
     plt.ylabel("No. of Predictions")
-    plt.show()
+    # plt.show()
+    plt.savefig('output_graph/final_plot.png')

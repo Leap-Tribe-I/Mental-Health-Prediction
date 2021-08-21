@@ -13,5 +13,5 @@ def AccuracyPlot(accuracyDict):
     plt.xlabel('Method')
     plt.ylabel('Percentage')
     plt.title('Success of methods')
-    plt.show()
-    plt.savefig('Accuracy Graph.png')
+    # plt.show()
+    plt.savefig('output_graph/AccuracyBarGraph.png')

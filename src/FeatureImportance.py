@@ -20,11 +20,11 @@ def featuring_importance(X,y):
         labels.append(X.columns[f])
 
     #ploting feature importance bar graph
-    # plt.figure(figsize=(12,8))
-    # plt.title("Feature importances")
-    # plt.bar(range(X.shape[1]), imp[indices],
-    #     color="g", yerr=stan_dev[indices], align="center")
-    # plt.xticks(range(X.shape[1]), labels, rotation='vertical')
-    # plt.xlim([-1, X.shape[1]])
+    plt.figure(figsize=(12,8))
+    plt.title("Feature importances")
+    plt.bar(range(X.shape[1]), imp[indices],
+        color="g", yerr=stan_dev[indices], align="center")
+    plt.xticks(range(X.shape[1]), labels, rotation='vertical')
+    plt.xlim([-1, X.shape[1]])
     # plt.show()
-    # plt.savefig('FeatureImportance.png')
+    plt.savefig('output_graph/FeatureImportance.png')
