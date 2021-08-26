@@ -30,7 +30,7 @@ def input_page():
 
 @app.route("/download")
 def download():
-    suicide()
+    # suicide()
     return render_template('download.html')
 
 @app.route("/load")
@@ -59,5 +59,21 @@ def download_graph():
         zipfolder.close()
     return send_file('output_graph.zip', as_attachment=True)
 
+@app.route('/login')
+def login():
+    return redirect('http://localhost:3000/login')
+
+@app.route('/signup')
+def signup():
+    return redirect('http://localhost:3000/signup')
+
+@app.route('/logout')
+def logout():
+    return redirect('http://localhost:3000/logout')
+
+@app.route('/forgotpassword')
+def forgotpassword():
+    return redirect('http://localhost:3000/forgotpass')
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0')
