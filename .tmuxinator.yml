@@ -1,0 +1,10 @@
+name: suicide-prediction
+root: .
+
+windows:
+  - editor:
+      layout: 60a4,120x29,0,0[120x14,0,0,0,120x14,0,15{59x14,0,15,1,60x14,60,15,2}]
+      panes:
+       - date
+       - cd ./Login-Signup && node server.js
+       - cd ./Prediction && python3 server.py

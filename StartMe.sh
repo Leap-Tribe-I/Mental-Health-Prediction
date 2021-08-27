@@ -1,0 +1,5 @@
+#!/bin/sh
+
+
+
+tmuxinator local
