@@ -34,6 +34,8 @@ Leap 4.0 Major Project
 <ul>
  <li>Python</li>
  <li>Flask</li>
+ <li>Node.js</li>
+ <li>Mongodb</li>
  <li>Html/CSS</li>
  <li>scikit-learn</li>
  <li>tensorflow</li>
