@@ -1,4 +1,4 @@
-# Suicide-Prediction
+# Mental-Health-Prediction
 <hr> 
 Leap 4.0 Major Project
 <hr>
